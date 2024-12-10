@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DUONGBAO</title>
+    <link rel="stylesheet" href="Style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script src="script.js"></script>
+    <script src="flight-data.js"></script>
+
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <nav class="navbar">
+            <div class="logo">DUONGBAO UNIQUE</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Trang chủ</a></li>
+                <li><a href="#flights" class="active">Các vé hiện có</a></li>
+                <li><a href="#flight-management"> Quản lý chuyến bay</a></li>
+                <li><a href="#available-flight"> Các chuyến hiện có</a></li>
+
+                <li><a href="#info">Thông tin </a></li>
+            </ul>
+        </nav>
+        <div class="hero-content">
+            <h1>Chào mừng bạn,<br>Admin!</h1>
+            <p class="hero-description">
+                Trang web cung cấp các tính năng như tìm kiếm chuyến bay theo nhiều tiêu chí, lọc theo giá cả, điểm đến,
+                ghế ngồi và thời gian, xem thông tin chi tiết về điểm đến hấp dẫn cùng với gợi ý du lịch được chúng tôi
+                đề xuất ! </p>
+        </div>
+    </header>
+
+    <!-- Popular Destinations -->
+    <section class="destinations" id="flights">
+        <h2>Các vé hiện có</h2>
+        <div class="destination-grid">
+            <div class="destination-card">
+                <img src="./Vũng Tàu.jpg" alt="VT">
+                <div class="card-content">
+                    <h3>Vũng Tàu</h3>
+                    <span class="price">đ 1.687.000</span>
+                </div>
+            </div>
+            <div class="destination-card">
+                <img src="./Đà nẵng.jpg" alt="ĐN">
+                <div class="card-content">
+                    <h3>Đà Nẵng</h3>
+                    <span class="price">đ 1.793.200</span>
+                </div>
+            </div>
+            <div class="destination-card">
+                <img src="./Hội An.png" alt="HA">
+                <div class="card-content">
+                    <h3>Hội An</h3>
+                    <span class="price">đ 2.242.500</span>
+                </div>
+            </div>
+            <div class="destination-card">
+                <img src="./Nha Trang.png" alt="NT">
+                <div class="card-content">
+                    <h3>Nha Trang</h3>
+                    <span class="price">đ 1.687.000</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommendations
+    <section class="recommendations">
+        <h2>Gợi ý</h2>
+        <div class="recommendation-content"> -->
+    <!-- Left Panel -->
+    <!-- <div class="recommendation-info">
+                <h3>Đà Lạt</h3>
+                <p>Thành phố mộng mơ</p>
+                <div class="price-box">
+                    <span>Chỉ từ</span>
+                    <span class="price">đ 1.500.000</span>
+                </div>
+                <p>
+                    "Thành phố mộng mơ" là một cái tên đầy ấn tượng được du khách ưu ái đặt tên cho Đà Lạt, bởi lẽ mọi thứ thuộc về thành phố này đều dịu dàng, mơ màng và bí ẩn: từ tiết trời trong trẻo, se lạnh đến khung cảnh thiên nhiên tuyệt đẹp với đồi thông xanh mướt, hồ nước trong xanh và vườn hoa rực rỡ.
+                </p>
+                <button class="btn-primary">Đặt vé ngay!</button>
+            </div> -->
+    <!-- Right Panel -->
+    <!-- <div class="recommendation-images">
+                <img src="./Đà lạt 1.webp" alt="1">
+                <img src="./Đà lạt 2.jpg" alt="2">
+                <img src="./Đà lạt 3.png" alt="3">
+                <img src="./Đà lạt 4.jpg" alt="4">
+            </div>
+        </div>
+    </section> -->
+    <!-- Modify flight -->
+    <section class="modify-services" id="flight-management">
+        <h2>Quản lý chuyến bay</h2>
+        <div class="services-container">
+            <div class="service-card" onclick="openModal('add')">
+                <div class="service-icon">
+                    <i class="fas fa-plus-circle"></i>
+                </div>
+                <h3>Thêm chuyến bay</h3>
+            </div>
+            <div class="service-card" onclick="openModal('delete')">
+                <div class="service-icon">
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+                <h3>Xóa chuyến bay</h3>
+            </div>
+            <div class="service-card" onclick="openModal('edit')">
+                <div class="service-icon">
+                    <i class="fas fa-edit"></i>
+                </div>
+                <h3>Sửa chuyến bay</h3>
+            </div>
+            <div class="service-card" onclick="openModal('update')">
+                <div class="service-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3>Cập nhật chuyến bay</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Thêm chuyến bay -->
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('add')">&times;</span>
+            <div class="modal-header">
+                <h2>Thêm chuyến bay mới</h2>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="flightNumber">Mã chuyến bay</label>
+                    <input type="text" id="flightNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="departure">Điểm khởi hành</label>
+                    <input type="text" id="departure" required>
+                </div>
+                <div class="form-group">
+                    <label for="destination">Điểm đến</label>
+                    <input type="text" id="destination" required>
+                </div>
+                <div class="form-group">
+                    <label for="departureDate">Ngày khởi hành</label>
+                    <input type="date" id="departureDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="departureTime">Giờ khởi hành</label>
+                    <input type="time" id="departureTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="price">Giá vé</label>
+                    <input type="number" id="price" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Thêm chuyến bay</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('add')">Hủy</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Xóa chuyến bay -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('delete')">&times;</span>
+            <div class="modal-header">
+                <h2>Xóa chuyến bay</h2>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="deleteFlightNumber">Mã chuyến bay cần xóa</label>
+                    <input type="text" id="deleteFlightNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmDelete">Xác nhận xóa</label>
+                    <div class="confirmation-text">
+                        Bạn có chắc chắn muốn xóa chuyến bay này?
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-danger">Xóa chuyến bay</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('delete')">Hủy</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Sửa chuyến bay -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('edit')">&times;</span>
+            <div class="modal-header">
+                <h2>Sửa thông tin chuyến bay</h2>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="editFlightNumber">Mã chuyến bay</label>
+                    <input type="text" id="editFlightNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="editDeparture">Điểm khởi hành mới</label>
+                    <input type="text" id="editDeparture">
+                </div>
+                <div class="form-group">
+                    <label for="editDestination">Điểm đến mới</label>
+                    <input type="text" id="editDestination">
+                </div>
+                <div class="form-group">
+                    <label for="editDepartureDate">Ngày khởi hành mới</label>
+                    <input type="date" id="editDepartureDate">
+                </div>
+                <div class="form-group">
+                    <label for="editDepartureTime">Giờ khởi hành mới</label>
+                    <input type="time" id="editDepartureTime">
+                </div>
+                <div class="form-group">
+                    <label for="editPrice">Giá vé mới</label>
+                    <input type="number" id="editPrice">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('edit')">Hủy</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Cập nhật trạng thái chuyến bay -->
+    <div id="updateModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('update')">&times;</span>
+            <div class="modal-header">
+                <h2>Cập nhật trạng thái chuyến bay</h2>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label for="updateFlightNumber">Mã chuyến bay</label>
+                    <input type="text" id="updateFlightNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="flightStatus">Trạng thái mới</label>
+                    <select id="flightStatus" required>
+                        <option value="">Chọn trạng thái</option>
+                        <option value="ontime">Đúng giờ</option>
+                        <option value="delayed">Bị hoãn</option>
+                        <option value="cancelled">Đã hủy</option>
+                        <option value="completed">Đã hoàn thành</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="statusNote">Ghi chú</label>
+                    <input type="text" id="statusNote">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Cập nhật trạng thái</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('update')">Hủy</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Flight Search -->
+    <section class="flight-search" id="available-flight">
+        </div>
+        <h2> Các chuyến hiện có</h2>
+
+        <div class="search-content">
+            <aside class="filters">
+                <h3>Bộ lọc</h3>
+                <!-- Price Filter -->
+                <div class="filter-group">
+                    <h4>Giá</h4>
+                    <input type="range" min="50" max="1200" value="600" class="slider" id="priceRange">
+                    <div class="price-range">
+                        <span>đ<span id="priceMin"> 1.000.000</span></span>
+                        <span>đ<span id="priceMax"> 3.000.000</span></span>
+                    </div>
+                </div>
+
+                <!-- Time Filter -->
+                <div class="filter-group">
+                    <h4>Thời gian đến</h4>
+                    <input type="range" min="0" max="24" value="12" class="slider" id="timeRange">
+                    <div class="time-range">
+                        <span id="timeMin">12:00 AM</span>
+                        <span id="timeMax">12:00 PM</span>
+                    </div>
+                </div>
+                <!-- Airlines Filter -->
+                <div class="filter-group">
+                    <h4>Chuyến bay</h4>
+                    <div class="airline-options">
+                        <label class="custom-checkbox">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                            Vietjet
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                            JetStar
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                            Qatar
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                            Vietnam Airlines
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Search Button -->
+                <button class="search-button">
+                    Áp dụng
+                    <span class="button-icon">→</span>
+                </button>
+            </aside>
+
+            <div class="flight-results">
+                <div class="results-header">
+                    <p>Showing <strong>3</strong> of <strong>15</strong> flights</p>
+                    <select class="sort-select">
+                        <option>Sort by Giá</option>
+                        <option>Sort by Thời lượng</option>
+                        <option>Sort by Điểm đến</option>
+                    </select>
+                </div>
+
+                <div class="flight-cards">
+                    <!-- Flight Card 1 -->
+                    <div class="flight-card">
+                        <div class="airline-info">
+                            <div class="airline-details">
+                                <img class="airline-logo" src="./vietjet.png" alt="vietjet">
+                            </div>
+                            <div class="flight-details">
+                                <div class="flight-times">
+                                    <span class="time">12:00 pm</span>
+                                    <span class="time"> - </span>
+                                    <span class="time">06:00 pm</span>
+                                </div>
+                                <div class="route-line">
+                                    <span class="dot"></span>
+                                    <span class="line"></span>
+                                    <span class="dot"></span>
+                                </div>
+                                <div class="airports">
+                                    <span>HAN</span>
+                                    <span>SGN</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price">
+                                <span class="currency">đ</span>
+                                <span class="amount">3.000.000</span>
+                            </div>
+                            <button class="btn-secondary">Xem chuyến bay</button>
+                        </div>
+                    </div>
+
+                    <!-- Flight Card 2 -->
+                    <div class="flight-card">
+                        <div class="airline-info">
+                            <div class="airline-details">
+                                <img class="airline-logo" src="./jetstar.png" alt="jetstar">
+                            </div>
+                            <div class="flight-details">
+                                <div class="flight-times">
+                                    <span class="time">02:00 pm</span>
+                                    <span class="time"> - </span>
+                                    <span class="time">08:00 pm</span>
+                                </div>
+                                <div class="route-line">
+                                    <span class="dot"></span>
+                                    <span class="line"></span>
+                                    <span class="dot"></span>
+                                </div>
+                                <div class="airports">
+                                    <span>DANANG</span>
+                                    <span>HOIAN</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price">
+                                <span class="currency">đ</span>
+                                <span class="amount">3.200.000</span>
+                            </div>
+                            <button class="btn-secondary">Xem chuyến bay</button>
+                        </div>
+                    </div>
+
+                    <!-- Flight Card 3 -->
+                    <div class="flight-card">
+                        <div class="airline-info">
+                            <div class="airline-details">
+                                <img class="airline-logo" src="./Vietnamairline.png" alt="vietnam airlines">
+                            </div>
+                            <div class="flight-details">
+                                <div class="flight-times">
+                                    <span class="time">08:00 am</span>
+                                    <span class="time"> - </span>
+                                    <span class="time">02:00 pm</span>
+                                </div>
+                                <div class="route-line">
+                                    <span class="dot"></span>
+                                    <span class="line"></span>
+                                    <span class="dot"></span>
+                                </div>
+                                <div class="airports">
+                                    <span>DALAT</span>
+                                    <span>VUNGTAU</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="price">
+                                <span class="currency">đ</span>
+                                <span class="amount">2.000.000</span>
+                            </div>
+                            <button class="btn-secondary">Xem chuyến bay</button>
+                        </div>
+
+                    </div>
+
+
+    </section>
+    <!-- Testimonials Section - Thêm trước section contact
+<section class="testimonials">
+    <h2>Khách hàng nói gì về chúng tôi</h2>
+    <div class="testimonials-container">
+        <div class="testimonial-card">
+            <div class="testimonial-image">
+                <img src="./Donald trump.jpg" alt="Customer 1">
+            </div>
+            <div class="testimonial-content">
+                <p class="testimonial-text">"Dịch vụ tuyệt vời, đặt vé dễ dàng và nhanh chóng. Tôi sẽ tiếp tục sử dụng LAMBAO cho những chuyến bay tiếp theo."</p>
+                <h4 class="testimonial-name">Donald Trump</h4>
+                <p class="testimonial-role">Chính Trị Gia</p>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-image">
+                <img src="./Elon musk.jpg" alt="Customer 2">
+            </div>
+            <div class="testimonial-content">
+                <p class="testimonial-text">"Giá cả hợp lý, nhiều lựa chọn chuyến bay và dịch vụ khách hàng rất tận tình."</p>
+                <h4 class="testimonial-name">Elon Musk</h4>
+                <p class="testimonial-role">Tỷ phú doanh nhân</p>
+            </div>
+        </div>
+    </div>
+</section> -->
+    <!-- Newsletter Section - Thêm trước section contact
+<section class="newsletter">
+    <div class="newsletter-content">
+        <h2>Đăng ký nhận thông tin</h2>
+        <p>Nhận thông báo về ưu đãi và khuyến mãi mới nhất</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Nhập email của bạn">
+            <button type="submit" class="btn-primary">Đăng ký</button>
+        </form>
+    </div>
+</section> -->
+    <!-- Contact
+    <section class="contact">
+        <h2>Liên hệ với chúng tôi</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Thông tin liên hệ</h3>
+                <p>Email: lambaonhom10@lambao.com</p>
+                <p>Điện thoại: +84 123 456 789</p>
+                <p>Địa chỉ: Số 10 Quang Trung, TP. Hồ Chí Minh, Việt Nam</p>
+            </div>
+            <div class="contact-form">
+                <h3>Gửi phản hồi</h3>
+                <form>
+                    <label for="name">Họ và tên:</label>
+                    <input type="text" id="name" name="name" placeholder="Nhập tên của bạn" required>
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Nhập email của bạn" required>
+                    
+                    <label for="message">Tin nhắn:</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Nhập nội dung" required></textarea>
+                    
+                    <button type="submit" class="btn-primary">Gửi</button>
+                </form>
+            </div>
+        </div> -->
+    </section>
+    <!-- Footer Section - Thêm vào cuối body -->
+    <footer class="footer" id="info">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về DUONGBAO UNIQUE</h3>
+                <ul>
+                    <li><a href="#">20 năm thành lập</a></li>
+                    <li><a href="#">Đội ngũ tư vấn nhiệt tình</a></li>
+                    <li><a href="#">Cập nhật thông tin chuyến bay sớm nhất</a></li>
+                    <li><a href="#">Khách hàng là số 1</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Hỗ trợ</h3>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                    <li><a href="#">Điều khoản sử dụng</a></li>
+                    <li><a href="#">Hướng dẫn đặt vé</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Thanh toán</h3>
+                <div class="payment-methods">
+                    <ul>
+                        <li><a href="#">Visa</a></li>
+                        <li><a href="#">Mastercard</a></li>
+                        <li><a href="#">Momo</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Kết nối với chúng tôi</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 DUONGBAO. Bản quyền thuộc nhóm của Dương và Bảo.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+﻿@page
+@model DBFlightManagement.Pages.Tickets.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ticket[0].FlightId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ticket[0].CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ticket[0].BookingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ticket[0].SeatBooked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ticket[0].Sale)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ticket[0].TotalPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Ticket) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeatBooked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sale)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.TicketId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.TicketId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.TicketId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

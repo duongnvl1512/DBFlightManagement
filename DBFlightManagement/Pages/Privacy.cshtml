@@ -1,0 +1,146 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "";
+    Layout = null;
+}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fa;
+        color: #333;
+        margin: 0;
+        padding: 2rem;
+    }
+
+    .privacy-policy-container {
+        max-width: 1000px;
+        padding: 2rem;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin: 0 auto;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        color: #343a40;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        color: #007bff;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-left: 2rem;
+    }
+
+    li {
+        margin-bottom: 0.5rem;
+    }
+
+    .privacy-policy-section {
+        margin-bottom: 2rem;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 0.75rem 1.25rem;
+        font-size: 1rem;
+        font-weight: bold;
+        text-decoration: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        margin-top: 1rem;
+        text-align: center;
+    }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+    .back-home-btn {
+        display: block;
+        margin-top: 2rem;
+        text-align: center;
+        padding: 0.75rem 1.25rem;
+        background-color: #6c757d;
+        color: white;
+        font-size: 1rem;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+    }
+
+        .back-home-btn:hover {
+            background-color: #495057;
+        }
+</style>
+
+<div class="privacy-policy-container">
+    <h1>@ViewData["Title"]</h1>
+
+    <section class="privacy-policy-section">
+        <h2>Introduction</h2>
+        <p>At <b>DUONGBAO UNIQUE</b>, we are committed to safeguarding the privacy of our customers and ensuring that their personal data is handled responsibly. This privacy policy outlines how we collect, use, and protect your personal information when you use our services, including booking flights, managing your account, and other related activities.</p>
+    </section>
+
+    <section class="privacy-policy-section">
+        <h2>Information We Collect</h2>
+        <p>We may collect the following types of personal information:</p>
+        <ul>
+            <li>Personal Identification Information (Name, email address, phone number, etc.)</li>
+            <li>Flight-related Information (Flight details, booking history, seat preferences, etc.)</li>
+            <li>Payment Information (Billing address, credit card details, etc.)</li>
+            <li>Technical Information (IP address, browser type, cookies, etc.)</li>
+        </ul>
+    </section>
+
+    <section class="privacy-policy-section">
+        <h2>How We Use Your Information</h2>
+        <p>Your information is used for the following purposes:</p>
+        <ul>
+            <li>To process flight bookings and manage your account.</li>
+            <li>To send important updates regarding your flight status, changes, or cancellations.</li>
+            <li>To improve our website functionality and user experience.</li>
+            <li>To comply with legal and regulatory requirements.</li>
+        </ul>
+    </section>
+
+    <section class="privacy-policy-section">
+        <h2>Data Protection</h2>
+        <p>We implement strict security measures to protect your personal information. All sensitive data is encrypted and stored securely in compliance with industry standards. We also limit access to your data to authorized personnel only.</p>
+    </section>
+
+    <section class="privacy-policy-section">
+        <h2>Your Rights</h2>
+        <p>As a user, you have the following rights regarding your personal data:</p>
+        <ul>
+            <li>The right to access the information we hold about you.</li>
+            <li>The right to correct any inaccuracies in your data.</li>
+            <li>The right to request the deletion of your data, subject to certain conditions.</li>
+            <li>The right to object to the processing of your data for specific purposes.</li>
+        </ul>
+    </section>
+
+    <section class="privacy-policy-section">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or concerns about your privacy or this policy, please contact us at <b>duongbao123@gmail.com</b></p>
+    </section>
+
+    <a href="/Index" class="back-home-btn">Back to Home</a>
+</div>

@@ -1,0 +1,59 @@
+﻿@page
+@model DBFlightManagement.Pages.Tickets.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Ticket</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Ticket.FlightId" class="control-label"></label>
+                <input asp-for="Ticket.FlightId" class="form-control" />
+                <span asp-validation-for="Ticket.FlightId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ticket.CustomerId" class="control-label"></label>
+                <input asp-for="Ticket.CustomerId" class="form-control" />
+                <span asp-validation-for="Ticket.CustomerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ticket.BookingDate" class="control-label"></label>
+                <input asp-for="Ticket.BookingDate" class="form-control" />
+                <span asp-validation-for="Ticket.BookingDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ticket.SeatBooked" class="control-label"></label>
+                <input asp-for="Ticket.SeatBooked" class="form-control" />
+                <span asp-validation-for="Ticket.SeatBooked" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ticket.Sale" class="control-label"></label>
+                <input asp-for="Ticket.Sale" class="form-control" />
+                <span asp-validation-for="Ticket.Sale" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ticket.TotalPrice" class="control-label"></label>
+                <input asp-for="Ticket.TotalPrice" class="form-control" />
+                <span asp-validation-for="Ticket.TotalPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

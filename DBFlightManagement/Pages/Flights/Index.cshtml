@@ -1,0 +1,66 @@
+﻿@page
+@model DBFlightManagement.Pages.Flights.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Flight[0].Airline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flight[0].DepartureAirport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flight[0].ArrivalAirport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flight[0].DepartureDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flight[0].AvailableSeats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flight[0].TicketPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Flight) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Airline)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartureAirport)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrivalAirport)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartureDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvailableSeats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketPrice)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.FlightId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.FlightId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.FlightId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
