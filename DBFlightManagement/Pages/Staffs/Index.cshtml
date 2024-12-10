@@ -2,71 +2,238 @@
 @model DBFlightManagement.Pages.Staffs.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Staff Management";
 }
 
-<h1>Index</h1>
+<h1>Staff Management</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Staff[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Staff[0].DateOfBirth)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Staff[0].Gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Staff[0].Position)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Staff[0].Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Staff[0].Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Staff[0].Email)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Staff) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfBirth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Position)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.StaffId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.StaffId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.StaffId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<!-- Create New Button Container -->
+<div class="create-button-container">
+    <a asp-page="Create" class="btn btn-success">Create New</a>
+</div>
+
+<!-- Table Container for Centering -->
+<div class="table-container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Staff[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Staff[0].DateOfBirth)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Staff[0].Gender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Staff[0].Position)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Staff[0].Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Staff[0].Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Staff[0].Email)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Staff) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Position)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td class="action-buttons">
+                        <a asp-page="./Edit" asp-route-id="@item.StaffId" class="btn btn-primary">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.StaffId" class="btn btn-info">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.StaffId" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    /* Container for the page */
+    .table-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px; /* Thêm khoảng cách phía trên */
+    }
+
+    /* Table Styles */
+    .table {
+        width: 80%; /* Đặt chiều rộng bảng khoảng 80% */
+        max-width: 1200px; /* Giới hạn chiều rộng bảng tối đa */
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+        .table th, .table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 1rem;
+            vertical-align: middle; /* Căn giữa các nội dung trong các ô */
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .table tbody tr:hover {
+            background-color: #e9ecef;
+        }
+
+        /* Hover Effect for Table Rows */
+        .table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Action Links Styling in Table */
+        .table a {
+            color: #black;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+            .table a:hover {
+                text-decoration: underline;
+                background-color: #f0f0f0;
+            }
+
+    /* Container for the Create New button */
+    .create-button-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .btn-create {
+        background-color: #28a745;
+        color: white;
+        padding: 12px 24px;
+        font-size: 1.2rem;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-create:hover {
+            background-color: #218838;
+        }
+
+    /* Action Buttons Styling */
+    .action-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center; /* Căn giữa các nút hành động */
+        color: black;
+    }
+
+    /* Nút Edit (Primary) */
+    .btn-primary {
+        background-color: #4CAF50; /* Màu xanh lá cây tươi */
+        color: white;
+        padding: 8px 16px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    /* Nút Info (Light Blue) */
+    .btn-info {
+        background-color: #17a2b8; /* Màu xanh da trời */
+        color: white;
+        padding: 8px 16px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    /* Nút Delete (Danger) */
+    .btn-danger {
+        background-color: #FF5733; /* Màu đỏ cam */
+        color: white;
+        padding: 8px 16px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    /* Hiệu ứng hover cho các nút */
+    .btn-primary:hover {
+        background-color: #45a049; /* Xanh lá đậm hơn khi hover */
+        transform: scale(1.05);
+    }
+
+    .btn-info:hover {
+        background-color: #138496; /* Xanh da trời đậm hơn khi hover */
+        transform: scale(1.05);
+    }
+
+    .btn-danger:hover {
+        background-color: #c0392b; /* Đỏ cam đậm hơn khi hover */
+        transform: scale(1.05);
+    }
+
+    /* Optional: Thêm hiệu ứng focus khi nhấn vào nút */
+    .btn-primary:focus, .btn-info:focus, .btn-danger:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.5);
+    }
+
+    /* Title and paragraph Styling */
+    h1 {
+        font-size: 2rem;
+        color: #333;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    p {
+        font-size: 1.1rem;
+        color: #666;
+        margin-top: 15px;
+    }
+</style>

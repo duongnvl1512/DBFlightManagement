@@ -1,0 +1,117 @@
+﻿@page
+@model ResendEmailConfirmationModel
+@{
+    ViewData["Title"] = "Resend email confirmation";
+}
+
+<h1>@ViewData["Title"]</h1>
+<h2>Enter your email.</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Email" class="form-control" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Input.Email" class="form-label"></label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <button type="submit" class="w-100 btn btn-lg btn-primary">Resend</button>
+        </form>
+        <a id="back-to-home" href="/" class="btn btn-secondary">Back to Home</a>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+<style>
+    /* Resend Email Confirmation Page Container */
+    .row {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Resend Email Confirmation Form */
+    #resend-email-form {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Form Heading */
+    h1, h2 {
+        color: #333;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    /* Form Fields */
+    .form-floating {
+        margin-bottom: 20px;
+    }
+
+        .form-floating input {
+            border-radius: 8px;
+            height: 45px;
+            font-size: 1rem;
+            padding: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+            .form-floating input:focus {
+                border-color: #007bff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            }
+
+        /* Form Labels */
+        .form-floating label {
+            font-size: 1rem;
+            color: #495057;
+        }
+
+    /* Button Styling */
+    button[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        border-radius: 25px;
+        padding: 12px;
+        font-weight: bold;
+        border: none;
+        transition: background-color 0.3s ease;
+        width: 100%;
+    }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+    /* Validation error messages */
+    .text-danger {
+        color: #dc3545;
+        font-size: 0.875rem;
+    }
+
+    /* Padding for the row and form to center */
+    .col-md-4 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Back to Home Button Styling */
+    #back-to-home {
+        display: block;
+        width: auto;
+        margin-top: 20px;
+        background-color: #6c757d;
+        color: white;
+        padding: 12px;
+        text-align: center;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: bold;
+        transi
+
+</style>

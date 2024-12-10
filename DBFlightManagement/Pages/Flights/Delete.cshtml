@@ -5,54 +5,160 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<h1>@ViewData["Title"]</h1>
 
 <h3>Are you sure you want to delete this?</h3>
-<div>
+<div id="flight-delete-container">
     <h4>Flight</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Flight.Airline)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Flight.Airline)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Flight.DepartureAirport)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Flight.DepartureAirport)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Flight.ArrivalAirport)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Flight.ArrivalAirport)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Flight.DepartureDateTime)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Flight.DepartureDateTime)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Flight.AvailableSeats)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Flight.AvailableSeats)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Flight.TicketPrice)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Flight.TicketPrice)
-        </dd>
-    </dl>
-    
+    <div class="row">
+        <div class="col-md-4">
+            <dl class="row">
+                <!-- Airline -->
+                <div class="col-sm-12 mb-3">
+                    <strong>@Html.DisplayNameFor(model => model.Flight.Airline)</strong>
+                    <p>@Html.DisplayFor(model => model.Flight.Airline)</p>
+                </div>
+
+                <!-- Departure Airport -->
+                <div class="col-sm-12 mb-3">
+                    <strong>@Html.DisplayNameFor(model => model.Flight.DepartureAirport)</strong>
+                    <p>@Html.DisplayFor(model => model.Flight.DepartureAirport)</p>
+                </div>
+
+                <!-- Arrival Airport -->
+                <div class="col-sm-12 mb-3">
+                    <strong>@Html.DisplayNameFor(model => model.Flight.ArrivalAirport)</strong>
+                    <p>@Html.DisplayFor(model => model.Flight.ArrivalAirport)</p>
+                </div>
+
+                <!-- Departure DateTime -->
+                <div class="col-sm-12 mb-3">
+                    <strong>@Html.DisplayNameFor(model => model.Flight.DepartureDateTime)</strong>
+                    <p>@Html.DisplayFor(model => model.Flight.DepartureDateTime)</p>
+                </div>
+
+                <!-- Available Seats -->
+                <div class="col-sm-12 mb-3">
+                    <strong>@Html.DisplayNameFor(model => model.Flight.AvailableSeats)</strong>
+                    <p>@Html.DisplayFor(model => model.Flight.AvailableSeats)</p>
+                </div>
+
+                <!-- Ticket Price -->
+                <div class="col-sm-12 mb-3">
+                    <strong>@Html.DisplayNameFor(model => model.Flight.TicketPrice)</strong>
+                    <p>@Html.DisplayFor(model => model.Flight.TicketPrice)</p>
+                </div>
+            </dl>
+        </div>
+    </div>
+
+    <!-- Delete Form -->
     <form method="post">
         <input type="hidden" asp-for="Flight.FlightId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
+        <div class="form-group mb-3">
+            <input type="submit" value="Delete" class="w-100 btn btn-lg btn-danger" />
+        </div>
     </form>
+
+    <!-- Back to List Button -->
+    <div class="form-group">
+        <a asp-page="./Index" class="w-100 btn btn-lg btn-secondary">Back to List</a>
+    </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    /* Flight Delete Page Container */
+    #flight-delete-container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Heading */
+    h1, h4 {
+        color: #333;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    h3 {
+        color: #dc3545;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    /* Description List */
+    dl.row {
+        margin-top: 20px;
+    }
+
+    .col-sm-12 {
+        margin-bottom: 15px;
+    }
+
+    dl {
+        margin: 0;
+    }
+
+    strong {
+        font-size: 1.1rem;
+        color: #495057;
+    }
+
+    p {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+
+    /* Button Styling */
+    .btn {
+        border-radius: 25px;
+        padding: 12px;
+        font-weight: bold;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+    /* Padding for the row and form to center */
+    .col-md-4 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Back to List Button Styling */
+    a {
+        font-size: 1rem;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+</style>

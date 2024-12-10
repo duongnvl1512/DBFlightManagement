@@ -5,56 +5,178 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
+<h1>@ViewData["Title"]</h1>
 <h4>Customer</h4>
 <hr />
+
+<!-- Container for the form -->
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" id="edit-customer-form">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Hidden field for CustomerId -->
             <input type="hidden" asp-for="Customer.CustomerId" />
-            <div class="form-group">
-                <label asp-for="Customer.Name" class="control-label"></label>
-                <input asp-for="Customer.Name" class="form-control" />
+
+            <!-- Customer Name -->
+            <div class="form-floating mb-3">
+                <input asp-for="Customer.Name" class="form-control" placeholder="Customer Name" />
+                <label asp-for="Customer.Name" class="form-label"></label>
                 <span asp-validation-for="Customer.Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Customer.Address" class="control-label"></label>
-                <input asp-for="Customer.Address" class="form-control" />
+
+            <!-- Address -->
+            <div class="form-floating mb-3">
+                <input asp-for="Customer.Address" class="form-control" placeholder="Customer Address" />
+                <label asp-for="Customer.Address" class="form-label"></label>
                 <span asp-validation-for="Customer.Address" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Customer.DateOfBirth" class="control-label"></label>
-                <input asp-for="Customer.DateOfBirth" class="form-control" />
+
+            <!-- Date of Birth -->
+            <div class="form-floating mb-3">
+                <input asp-for="Customer.DateOfBirth" class="form-control" placeholder="Date of Birth" />
+                <label asp-for="Customer.DateOfBirth" class="form-label"></label>
                 <span asp-validation-for="Customer.DateOfBirth" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Customer.Gender" class="control-label"></label>
-                <input asp-for="Customer.Gender" class="form-control" />
+
+            <!-- Gender -->
+            <div class="form-floating mb-3">
+                <input asp-for="Customer.Gender" class="form-control" placeholder="Gender" />
+                <label asp-for="Customer.Gender" class="form-label"></label>
                 <span asp-validation-for="Customer.Gender" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Customer.Phone" class="control-label"></label>
-                <input asp-for="Customer.Phone" class="form-control" />
+
+            <!-- Phone -->
+            <div class="form-floating mb-3">
+                <input asp-for="Customer.Phone" class="form-control" placeholder="Phone" />
+                <label asp-for="Customer.Phone" class="form-label"></label>
                 <span asp-validation-for="Customer.Phone" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Customer.Email" class="control-label"></label>
-                <input asp-for="Customer.Email" class="form-control" />
+
+            <!-- Email -->
+            <div class="form-floating mb-3">
+                <input asp-for="Customer.Email" class="form-control" placeholder="Email" />
+                <label asp-for="Customer.Email" class="form-label"></label>
                 <span asp-validation-for="Customer.Email" class="text-danger"></span>
             </div>
+
+            <!-- Submit Button -->
+            <div class="form-group mb-3">
+                <button type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
+            </div>
+
+            <!-- Back to List Button -->
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-page="./Index" class="btn btn-secondary w-100 btn-lg">Back to List</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
+
+<style>
+    /* Edit Customer Page Container */
+    .row {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Edit Customer Form */
+    #edit-customer-form {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Form Heading */
+    h1, h4 {
+        color: #333;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    /* Form Fields */
+    .form-floating {
+        margin-bottom: 20px;
+    }
+
+        .form-floating input {
+            border-radius: 8px;
+            height: 45px;
+            font-size: 1rem;
+            padding: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+            .form-floating input:focus {
+                border-color: #007bff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            }
+
+        /* Form Labels */
+        .form-floating label {
+            font-size: 1rem;
+            color: #495057;
+        }
+
+    /* Submit Button Styling */
+    button[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        border-radius: 25px;
+        padding: 12px;
+        font-weight: bold;
+        border: none;
+        transition: background-color 0.3s ease;
+        width: 100%;
+    }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+    /* Back to List Button Styling */
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        border-radius: 25px;
+        padding: 12px;
+        font-weight: bold;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+    /* Validation error messages */
+    .text-danger {
+        color: #dc3545;
+        font-size: 0.875rem;
+    }
+
+    /* Padding for the row and form to center */
+    .col-md-4 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Back to List Styling */
+    a {
+        font-size: 1rem;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+</style>

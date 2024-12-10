@@ -7,6 +7,98 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/DBFlightManagement.styles.css" asp-append-version="true" />
+    <style>
+        /* Cải thiện giao diện navbar */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .navbar-brand {
+            color: #28a745 !important; /* Màu xanh nổi bật cho logo */
+            font-size: 1.75rem;
+            font-weight: bold;
+        }
+
+        /* Navbar links */
+        .nav-link {
+            color: black!important;
+            font-size: 1rem;
+            padding: 0.8rem 1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+            /* Hiệu ứng hover cho nav-link */
+            .nav-link:hover {
+                background-color: #495057; /* Màu nền tối khi hover */
+                color: #28a745; /* Màu chữ xanh lá khi hover */
+                border-radius: 4px;
+            }
+
+        /* Tạo khoảng cách giữa các mục trong navbar */
+        .navbar-nav {
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        /* Cải thiện giao diện của Login và Register buttons */
+        .navbar .navbar-collapse .nav-item .nav-link.login-btn,
+        .navbar .navbar-collapse .nav-item .nav-link.register-btn {
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-transform: uppercase;
+            transition: background-color 0.3s, color 0.3s ease;
+        }
+
+        /* Màu sắc cho Login */
+        .navbar .navbar-collapse .nav-item .nav-link.login-btn {
+            background-color: #007bff; /* Màu xanh cho Login */
+            color: white;
+        }
+
+        /* Màu sắc cho Register */
+        .navbar .navbar-collapse .nav-item .nav-link.register-btn {
+            background-color: #28a745; /* Màu xanh lá cho Register */
+            color: white;
+        }
+
+        /* Hiệu ứng hover cho login và register */
+        .navbar .navbar-collapse .nav-item .nav-link.login-btn:hover {
+            background-color: #0056b3; /* Sậm hơn khi hover */
+            color: white;
+        }
+
+        .navbar .navbar-collapse .nav-item .nav-link.register-btn:hover {
+            background-color: #218838; /* Sậm hơn khi hover */
+            color: white;
+        }
+
+        /* Chỉnh lại icon navbar-toggler cho dễ nhìn */
+        .navbar-toggler-icon {
+            background-color: white;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+        }
+
+            footer a {
+                color: #28a745;
+                text-decoration: none;
+            }
+
+                footer a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+
 </head>
 <body>
     <header>
@@ -37,11 +129,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - DBFlightManagement - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
+  
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

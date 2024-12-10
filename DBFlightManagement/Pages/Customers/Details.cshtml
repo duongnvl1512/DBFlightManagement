@@ -5,51 +5,148 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>@ViewData["Title"]</h1>
 
-<div>
+<div id="customer-details-container">
     <h4>Customer</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Customer.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Customer.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Customer.Address)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Customer.Address)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Customer.DateOfBirth)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Customer.DateOfBirth)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Customer.Gender)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Customer.Gender)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Customer.Phone)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Customer.Phone)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Customer.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Customer.Email)
-        </dd>
-    </dl>
+    <div class="row">
+        <div class="col-md-4">
+            <dl class="row">
+                <!-- Name -->
+                <div class="col-sm-12 mb-3">
+                    <strong>@Html.DisplayNameFor(model => model.Customer.Name)</strong>
+                    <p>@Html.DisplayFor(model => model.Customer.Name)</p>
+                </div>
+
+                <!-- Address -->
+                <div class="col-sm-12 mb-3">
+                    <strong>@Html.DisplayNameFor(model => model.Customer.Address)</strong>
+                    <p>@Html.DisplayFor(model => model.Customer.Address)</p>
+                </div>
+
+                <!-- DateOfBirth -->
+                <div class="col-sm-12 mb-3">
+                    <strong>@Html.DisplayNameFor(model => model.Customer.DateOfBirth)</strong>
+                    <p>@Html.DisplayFor(model => model.Customer.DateOfBirth)</p>
+                </div>
+
+                <!-- Gender -->
+                <div class="col-sm-12 mb-3">
+                    <strong>@Html.DisplayNameFor(model => model.Customer.Gender)</strong>
+                    <p>@Html.DisplayFor(model => model.Customer.Gender)</p>
+                </div>
+
+                <!-- Phone -->
+                <div class="col-sm-12 mb-3">
+                    <strong>@Html.DisplayNameFor(model => model.Customer.Phone)</strong>
+                    <p>@Html.DisplayFor(model => model.Customer.Phone)</p>
+                </div>
+
+                <!-- Email -->
+                <div class="col-sm-12 mb-3">
+                    <strong>@Html.DisplayNameFor(model => model.Customer.Email)</strong>
+                    <p>@Html.DisplayFor(model => model.Customer.Email)</p>
+                </div>
+            </dl>
+        </div>
+    </div>
+
+    <!-- Edit and Back Buttons -->
+    <div class="form-group mb-3">
+        <a asp-page="./Edit" asp-route-id="@Model.Customer.CustomerId" class="w-100 btn btn-lg btn-primary">Edit</a>
+    </div>
+    <div class="form-group">
+        <a asp-page="./Index" class="w-100 btn btn-lg btn-secondary">Back to List</a>
+    </div>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Customer.CustomerId">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    /* Customer Details Page Container */
+    #customer-details-container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Heading */
+    h1, h4 {
+        color: #333;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    /* Description List */
+    dl.row {
+        margin-top: 20px;
+    }
+
+    .col-sm-12 {
+        margin-bottom: 15px;
+    }
+
+    dl {
+        margin: 0;
+    }
+
+    strong {
+        font-size: 1.1rem;
+        color: #495057;
+    }
+
+    p {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+
+    /* Button Styling */
+    .btn {
+        border-radius: 25px;
+        padding: 12px;
+        font-weight: bold;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+    /* Padding for the row and form to center */
+    .col-md-4 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Back to List Button Styling */
+    a {
+        font-size: 1rem;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+</style>

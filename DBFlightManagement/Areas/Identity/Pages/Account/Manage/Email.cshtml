@@ -1,0 +1,172 @@
+﻿@page
+@model EmailModel
+@{
+    ViewData["Title"] = "";
+    ViewData["ActivePage"] = ManageNavPages.Email;
+}
+
+<h3>@ViewData["Title"]</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row">
+    <div class="col-md-6">
+        <form id="email-form" method="post">
+            <div asp-validation-summary="All" class="text-danger" role="alert"></div>
+            @if (Model.IsEmailConfirmed)
+            {
+                <div class="form-floating mb-3 input-group">
+                    <input asp-for="Email" class="form-control" placeholder="Please enter your email." disabled />
+                        <div class="input-group-append">
+                            <span class="h-100 input-group-text text-success font-weight-bold">✓</span>
+                        </div>
+                    <label asp-for="Email" class="form-label"></label>
+                </div>
+            }
+            else
+            {
+                <div class="form-floating mb-3">
+                    <input asp-for="Email" class="form-control" placeholder="Please enter your email." disabled />
+                    <label asp-for="Email" class="form-label"></label>
+                    <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail" class="btn btn-link">Send verification email</button>
+                </div>
+            }
+            <div class="form-floating mb-3">
+                <input asp-for="Input.NewEmail" class="form-control" autocomplete="email" aria-required="true" placeholder="Please enter new email." />
+                <label asp-for="Input.NewEmail" class="form-label"></label>
+                <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
+            </div>
+            <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="w-100 btn btn-lg btn-primary">Change email</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+<style>
+    /* Manage Email Page Container */
+    .row {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Manage Email Form */
+    #email-form {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Form Heading */
+    h3 {
+        color: #333;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    /* Form Fields */
+    .form-floating {
+        margin-bottom: 20px;
+    }
+
+        .form-floating input {
+            border-radius: 8px;
+            height: 45px;
+            font-size: 1rem;
+            padding: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+            .form-floating input:focus {
+                border-color: #007bff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            }
+
+        /* Form Labels */
+        .form-floating label {
+            font-size: 1rem;
+            color: #495057;
+        }
+
+    /* Button to send verification email */
+    #email-verification {
+        font-size: 1rem;
+        text-align: left;
+        color: #007bff;
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding-left: 0;
+        margin-top: 10px;
+    }
+
+    /* Change Email Button */
+    #change-email-button {
+        background-color: #007bff;
+        color: white;
+        border-radius: 25px;
+        padding: 12px;
+        font-weight: bold;
+        border: none;
+        transition: background-color 0.3s ease;
+        width: 100%;
+    }
+
+        #change-email-button:hover {
+            background-color: #0056b3;
+        }
+
+    /* Validation error messages */
+    .text-danger {
+        color: #dc3545;
+        font-size: 0.875rem;
+    }
+
+    /* Padding for the row and form to center */
+    .col-md-6 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Status message styling */
+    #StatusMessage {
+        font-size: 1rem;
+        color: #28a745;
+        background-color: #d4edda;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    /* Input group for email verification (showing ✓) */
+    .input-group-append .input-group-text {
+        background-color: transparent;
+        border: none;
+        font-size: 1.5rem;
+        color: green;
+        font-weight: bold;
+    }
+
+    /* Add margin between email verification button and input */
+    .form-floating .input-group {
+        margin-bottom: 20px;
+    }
+
+    /* Styling for form when email is confirmed */
+    .form-floating input:disabled {
+        background-color: #f8f9fa;
+    }
+
+    /* Styling for email verification status (✓) */
+    input:disabled + .form-label {
+        color: #6c757d;
+    }
+
+    /* Add a slight border-radius to input groups for better styling */
+    .input-group {
+        border-radius: 8px;
+    }
+
+</style>

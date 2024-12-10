@@ -1,7 +1,7 @@
 ﻿@page
 @model PersonalDataModel
 @{
-    ViewData["Title"] = "Personal Data";
+    ViewData["Title"] = "";
     ViewData["ActivePage"] = ManageNavPages.PersonalData;
 }
 
@@ -25,3 +25,97 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+<style>
+    /* Personal Data Page Container */
+    .row {
+        margin-top: 20px;
+        justify-content: center;
+    }
+
+    /* Personal Data Form */
+    #personal-data-form {
+        background-color: #ffffff;
+        padding: 10px;
+        border-radius: 12px;
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Form Heading */
+    h3 {
+        color: #333;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    /* Paragraphs and Description Text */
+    p {
+        font-size: 1.125rem;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    strong {
+        font-weight: bold;
+        color: #dc3545;
+    }
+
+    /* Button Styling */
+    button[type="submit"], .btn-primary, .btn-danger {
+        color: white;
+        padding: 12px;
+        font-weight: bold;
+        border: none;
+        transition: background-color 0.3s ease;
+        width: auto;
+        margin-top: 10px;
+    }
+
+        button[type="submit"]:hover, .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .btn-danger {
+        background-color: #dc3545;
+        width: auto;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+    /* Padding for the row and form to center */
+    .col-md-6 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Status message styling */
+    #StatusMessage {
+        font-size: 1rem;
+        color: #28a745;
+        background-color: #d4edda;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    /* Additional spacing for buttons */
+    p a {
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    /* Formatted Links */
+    a {
+        font-size: 1rem;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+</style>
