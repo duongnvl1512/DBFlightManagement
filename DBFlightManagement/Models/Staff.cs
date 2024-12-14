@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DBFlightManagement.Constants;
+using System.ComponentModel.DataAnnotations;
 
 namespace DBFlightManagement.Models
 {
@@ -8,7 +9,7 @@ namespace DBFlightManagement.Models
         public string Name { get; set; }
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
-        public int Gender { get; set; }
+        public GenderType Gender { get; set; }
         public string Position { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
