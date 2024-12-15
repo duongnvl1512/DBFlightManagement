@@ -20,6 +20,7 @@ namespace DBFlightManagement.Data
             {
                 UserName = "admin@gmail.com",
                 Email = "admin@gmail.com",
+                EmailConfirmed = true,
             };
 
             var userInDb = await userMgr.FindByEmailAsync(admin.Email);

@@ -21,9 +21,20 @@ namespace DBFlightManagement.Pages.Flights
 
         public IList<Flight> Flight { get;set; } = default!;
 
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; }
+
         public async Task OnGetAsync()
         {
-            Flight = await _context.Flight.ToListAsync();
+            var query = _context.Flight.AsQueryable();
+
+            if (!string.IsNullOrEmpty(SearchTerm))
+            {
+                query = query.Where(c => c.Airline.Contains(SearchTerm) ||
+                                         c.DepartureAirport.Contains(SearchTerm) ||
+                                         c.ArrivalAirport.Contains(SearchTerm));
+            }
+            Flight = await query.ToListAsync();
         }
     }
 }

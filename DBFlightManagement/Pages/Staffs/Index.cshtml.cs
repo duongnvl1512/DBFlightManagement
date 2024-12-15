@@ -21,8 +21,21 @@ namespace DBFlightManagement.Pages.Staffs
 
         public IList<Staff> Staff { get;set; } = default!;
 
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; }
+
         public async Task OnGetAsync()
         {
+            var query = _context.Staff.AsQueryable();
+
+            if (!string.IsNullOrEmpty(SearchTerm))
+            {
+                query = query.Where(c => c.Name.Contains(SearchTerm) ||
+                                         c.Position.Contains(SearchTerm) ||
+                                         c.Address.Contains(SearchTerm) ||
+                                         c.Phone.Contains(SearchTerm) ||
+                                         c.Email.Contains(SearchTerm));
+            }
             Staff = await _context.Staff.ToListAsync();
         }
     }

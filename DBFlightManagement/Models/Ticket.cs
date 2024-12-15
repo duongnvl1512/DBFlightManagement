@@ -7,6 +7,8 @@ namespace DBFlightManagement.Models
         public int TicketId { get; set; }
         public int FlightId { get; set; }
         public int CustomerId { get; set; }
+        public string DepartmentCity { get; set; }
+        public string ArrivalCity { get; set; }
         [DataType(DataType.Date)]
         public DateTime BookingDate { get; set; }
         public int SeatBooked { get; set; }
