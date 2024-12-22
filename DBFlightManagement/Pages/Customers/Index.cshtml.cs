@@ -28,14 +28,14 @@ namespace DBFlightManagement.Pages.Customers
 
         public async Task OnGetAsync()
         {
-            var query = _context.Customer.AsQueryable();
-
+            var query = _context.Customers.AsQueryable();
             if (!string.IsNullOrEmpty(SearchTerm))
             {
-                query = query.Where(c => c.Name.Contains(SearchTerm) ||
-                                         c.Address.Contains(SearchTerm) ||
-                                         c.Phone.Contains(SearchTerm) ||
-                                         c.Email.Contains(SearchTerm));
+                query = query.Where(c => c.Email.Contains(SearchTerm) ||
+                                         c.FirstName.Contains(SearchTerm) ||
+                                         c.LastName.Contains(SearchTerm) ||
+                                         c.PhoneNumber.Contains(SearchTerm) ||
+                                         c.Address.Contains(SearchTerm));
             }
 
             Customer = await query.ToListAsync();

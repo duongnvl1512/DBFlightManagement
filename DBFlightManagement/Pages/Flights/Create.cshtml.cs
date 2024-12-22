@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using DBFlightManagement.Data;
 using DBFlightManagement.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DBFlightManagement.Pages.Flights
 {
+    [Authorize(Roles = "Admin")]
     public class CreateModel : PageModel
     {
         private readonly DBFlightManagement.Data.ApplicationDbContext _context;
@@ -35,7 +37,7 @@ namespace DBFlightManagement.Pages.Flights
                 return Page();
             }
 
-            _context.Flight.Add(Flight);
+            _context.Flights.Add(Flight);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using DBFlightManagement.Data;
 using DBFlightManagement.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DBFlightManagement.Pages.Flights
 {
+    [Authorize(Roles = "Admin")]
     public class DetailsModel : PageModel
     {
         private readonly DBFlightManagement.Data.ApplicationDbContext _context;
@@ -28,7 +30,7 @@ namespace DBFlightManagement.Pages.Flights
                 return NotFound();
             }
 
-            var flight = await _context.Flight.FirstOrDefaultAsync(m => m.FlightId == id);
+            var flight = await _context.Flights.FirstOrDefaultAsync(m => m.FlightId == id);
             if (flight == null)
             {
                 return NotFound();

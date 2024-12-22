@@ -29,7 +29,7 @@ namespace DBFlightManagement.Pages.Customers
                 return NotFound();
             }
 
-            var customer = await _context.Customer.FirstOrDefaultAsync(m => m.CustomerId == id);
+            var customer = await _context.Customers.FirstOrDefaultAsync(m => m.CustomerId == id);
 
             if (customer == null)
             {
@@ -49,11 +49,11 @@ namespace DBFlightManagement.Pages.Customers
                 return NotFound();
             }
 
-            var customer = await _context.Customer.FindAsync(id);
+            var customer = await _context.Customers.FindAsync(id);
             if (customer != null)
             {
                 Customer = customer;
-                _context.Customer.Remove(Customer);
+                _context.Customers.Remove(Customer);
                 await _context.SaveChangesAsync();
             }
 
