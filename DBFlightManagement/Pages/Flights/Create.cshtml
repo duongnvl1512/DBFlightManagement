@@ -14,21 +14,25 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <span class="text-danger">*</span>
                 <label asp-for="Flight.Airline" class="control-label"></label>
                 <input asp-for="Flight.Airline" class="form-control" />
                 <span asp-validation-for="Flight.Airline" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <span class="text-danger">*</span>
                 <label asp-for="Flight.DepartureAirport" class="control-label"></label>
                 <input asp-for="Flight.DepartureAirport" class="form-control" />
                 <span asp-validation-for="Flight.DepartureAirport" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <span class="text-danger">*</span>
                 <label asp-for="Flight.ArrivalAirport" class="control-label"></label>
                 <input asp-for="Flight.ArrivalAirport" class="form-control" />
                 <span asp-validation-for="Flight.ArrivalAirport" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <span class="text-danger">*</span>
                 <label asp-for="Flight.DepartureDateTime" class="control-label"></label>
                 <input asp-for="Flight.DepartureDateTime" class="form-control" />
                 <span asp-validation-for="Flight.DepartureDateTime" class="text-danger"></span>

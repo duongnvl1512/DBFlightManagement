@@ -1,77 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DBFlightManagement.Data;
+using DBFlightManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using DBFlightManagement.Data;
-using DBFlightManagement.Models;
 
 namespace DBFlightManagement.Pages.Customers
 {
     public class EditModel : PageModel
     {
-        private readonly DBFlightManagement.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public EditModel(DBFlightManagement.Data.ApplicationDbContext context)
+        public EditModel(ApplicationDbContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public Customer Customer { get; set; } = default!;
+        public Customer Input { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public IActionResult OnGet(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var customer = _context.Customers.Find(id);
+            if (customer == null) return NotFound();
 
-            var customer =  await _context.Customer.FirstOrDefaultAsync(m => m.CustomerId == id);
-            if (customer == null)
-            {
-                return NotFound();
-            }
-            Customer = customer;
+            Input = customer;
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more information, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            if (!ModelState.IsValid) return Page();
 
-            _context.Attach(Customer).State = EntityState.Modified;
+            var existing = _context.Customers.Find(Input.CustomerId);
+            if (existing == null) return NotFound();
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CustomerExists(Customer.CustomerId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            existing.FirstName = Input.FirstName;
+            existing.LastName = Input.LastName;
+            existing.PhoneNumber = Input.PhoneNumber;
+            existing.Address = Input.Address;
 
-            return RedirectToPage("./Index");
-        }
+            _context.Customers.Update(existing);
+            _context.SaveChanges();
 
-        private bool CustomerExists(int id)
-        {
-            return _context.Customer.Any(e => e.CustomerId == id);
+            return RedirectToPage("Index");
         }
     }
 }

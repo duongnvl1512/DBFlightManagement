@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using DBFlightManagement.Data;
 using DBFlightManagement.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DBFlightManagement.Pages.Flights
 {
+    [Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
         private readonly DBFlightManagement.Data.ApplicationDbContext _context;
@@ -29,7 +31,7 @@ namespace DBFlightManagement.Pages.Flights
                 return NotFound();
             }
 
-            var flight = await _context.Flight.FirstOrDefaultAsync(m => m.FlightId == id);
+            var flight = await _context.Flights.FirstOrDefaultAsync(m => m.FlightId == id);
 
             if (flight == null)
             {
@@ -49,11 +51,11 @@ namespace DBFlightManagement.Pages.Flights
                 return NotFound();
             }
 
-            var flight = await _context.Flight.FindAsync(id);
+            var flight = await _context.Flights.FindAsync(id);
             if (flight != null)
             {
                 Flight = flight;
-                _context.Flight.Remove(Flight);
+                _context.Flights.Remove(Flight);
                 await _context.SaveChangesAsync();
             }
 

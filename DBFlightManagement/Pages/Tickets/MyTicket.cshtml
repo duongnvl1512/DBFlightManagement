@@ -1,0 +1,42 @@
+﻿@page
+@model DBFlightManagement.Pages.Tickets.MyTicketsModel
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>My Tickets</h2>
+
+@if (Model.Tickets == null || !Model.Tickets.Any())
+{
+    <p>You have not purchased any tickets yet.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ticket ID</th>
+                <th>Flight</th>
+                <th>Booking Date</th>
+                <th>Seats</th>
+                <th>Total Price</th>
+                <th>Payment Status</th>
+                <th>Payment Method</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ticket in Model.Tickets)
+            {
+                <tr>
+                    <td>@ticket.TicketId</td>
+                    <td>@ticket.FlightId</td>
+                    <td>@ticket.BookingDate</td>
+                    <td>@ticket.SeatBooked</td>
+                    <td>@ticket.TotalPrice</td>
+                    <td>@(ticket.PaymentStatus ? "Paid" : "Unpaid")</td>
+                    <td>@ticket.PaymentMethod</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

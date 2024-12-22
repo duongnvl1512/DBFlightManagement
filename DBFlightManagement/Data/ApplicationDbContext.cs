@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace DBFlightManagement.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -44,9 +44,9 @@ namespace DBFlightManagement.Data
                 entity.ToTable("UserTokens");
             });
         }
-        public DbSet<DBFlightManagement.Models.Customer> Customer { get; set; } = default!;
-        public DbSet<DBFlightManagement.Models.Flight> Flight { get; set; } = default!;
-        public DbSet<DBFlightManagement.Models.Staff> Staff { get; set; } = default!;
-        public DbSet<DBFlightManagement.Models.Ticket> Ticket { get; set; } = default!;
+        public DbSet<DBFlightManagement.Models.Customer> Customers { get; set; } = default!;
+        public DbSet<DBFlightManagement.Models.Flight> Flights { get; set; } = default!;
+        public DbSet<DBFlightManagement.Models.Ticket> Tickets { get; set; } = default!;
+
     }
 }

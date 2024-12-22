@@ -1,0 +1,51 @@
+﻿@page
+@model DBFlightManagement.Pages.Tickets.BuyTicketModel
+@{
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>Buy Ticket</h2>
+
+@if (!Model.TicketViewModel.IsFlightFound)
+{
+    <div class="alert alert-danger">
+        @Model.TicketViewModel.ErrorMessage
+    </div>
+}
+else
+{
+    <div>
+        <h4>
+            @Model.TicketViewModel.Flight.Airline
+            (@Model.TicketViewModel.Flight.DepartureAirport → @Model.TicketViewModel.Flight.ArrivalAirport)
+        </h4>
+        <p>Departure: @Model.TicketViewModel.Flight.DepartureDateTime</p>
+        <p>Available Seats: @Model.TicketViewModel.Flight.AvailableSeats</p>
+        <p>Price per seat: @Model.TicketViewModel.Flight.TicketPrice</p>
+    </div>
+
+    <form method="post">
+        <div class="mb-3">
+            <label for="seatCount">Number of seats:</label>
+            <input type="number" id="seatCount" name="seatCount" min="1" max="@Model.TicketViewModel.Flight.AvailableSeats" required class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label for="paymentMethod">Payment Method:</label>
+            <select id="paymentMethod" name="paymentMethod" class="form-select">
+                <option value="CreditCard">Credit Card</option>
+                <option value="PayPal">PayPal</option>
+                <option value="BankTransfer">Bank Transfer</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Confirm Purchase</button>
+    </form>
+}
+
+@if (!string.IsNullOrEmpty(Model.TicketViewModel.ErrorMessage) && Model.TicketViewModel.IsFlightFound)
+{
+    <div class="alert alert-success mt-3">
+        @Model.TicketViewModel.ErrorMessage
+    </div>
+}
