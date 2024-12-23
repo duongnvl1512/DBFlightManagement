@@ -2,7 +2,8 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = "";
+    Layout = null;
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -14,13 +15,11 @@
                 <hr />
                 <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                 <div class="form-floating mb-3">
-                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                    <label asp-for="Input.Email" class="form-label">Email</label>
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="Please input your email" />
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="form-floating mb-3">
-                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
-                    <label asp-for="Input.Password" class="form-label">Password</label>
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Please input your password" />
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div class="checkbox mb-3">
@@ -44,6 +43,7 @@
                     </p>
                 </div>
             </form>
+            <button id="back-home" onclick="window.location.href='/'">Back to Home</button>
         </section>
     </div>
     <div class="col-md-6 col-md-offset-2">
@@ -81,3 +81,117 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+<style>
+    body {
+        background: linear-gradient(135deg, #1E90FF, #2F4F4F);
+        color: #FFFFFF;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #FFFFFF;
+        margin-bottom: 20px;
+    }
+    a{
+        color:white;
+    }
+    .row {
+        background-color: rgba(47, 79, 79, 0.9);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+        .form-group label {
+            color: #B0C4DE;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+    .form-control {
+        background-color: #2F4F4F;
+        border: 2px solid #1E90FF;
+        color: #FFFFFF;
+        border-radius: 10px;
+        font-size: 1.6rem;
+        padding: 15px;
+        margin-top: 5px;
+        width: 100%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #4682B4;
+            box-shadow: 0 0 10px #4682B4;
+        }
+
+    .btn-primary {
+        background-color: #1E90FF;
+        border-color: #1E90FF;
+        transition: all 0.3s ease;
+        font-size: 1.4rem;
+        padding: 15px 20px;
+    }
+
+        .btn-primary:hover {
+            background-color: #4682B4;
+            border-color: #4682B4;
+        }
+
+    #login-submit {
+        background-color: #1E90FF;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 5px;
+        padding: 15px 20px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 20px;
+    }
+
+        #login-submit:hover {
+            background-color: #4682B4;
+        }
+
+    #back-home {
+        margin-top: 20px;
+        background-color: #2F4F4F;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 5px;
+        padding: 15px 20px;
+        font-size: 1.4rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: block;
+        text-align: center;
+    }
+
+        #back-home:hover {
+            background-color: #1E90FF;
+        }
+
+    hr {
+        border: 0;
+        height: 1px;
+        background: #1E90FF;
+        margin-bottom: 30px;
+    }
+</style>

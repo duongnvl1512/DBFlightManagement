@@ -4,7 +4,7 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h2>Edit Customer</h2>
+<h1>Edit Customer</h1>
 
 <form method="post">
     <div class="mb-3">
@@ -25,3 +25,113 @@
     </div>
     <button type="submit" class="btn btn-primary">Save</button>
 </form>
+<div>
+    <a asp-page="./Index" id="back-list">Back to List</a>
+</div>
+<style>
+    body {
+        background: linear-gradient(135deg, #1E90FF, #2F4F4F);
+        color: #FFFFFF;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .row {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-container {
+        background-color: rgba(47, 79, 79, 0.9);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        width: 50%;
+        text-align: center;
+    }
+
+    .form-floating {
+        position: relative;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+        .form-floating input {
+            background-color: #2F4F4F;
+            border: 2px solid #1E90FF;
+            color: #FFFFFF;
+            border-radius: 10px;
+            font-size: 1rem;
+            padding: 10px 15px;
+            width: 100%;
+        }
+
+        .form-floating label {
+            color: #B0C4DE;
+            font-size: 1rem;
+        }
+
+    .form-control {
+        background-color: #2F4F4F;
+        border: 2px solid #1E90FF;
+        color: #FFFFFF;
+        border-radius: 10px;
+        font-size: 1rem;
+        padding: 15px;
+        margin-top: 5px;
+        width: 100%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #4682B4;
+            box-shadow: 0 0 10px #4682B4;
+        }
+
+    .button-group {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .btn-primary,
+    #back-list {
+        width: 100%;
+        text-decoration: none;
+        background-color: #2F4F4F;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 20px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        flex: 1;
+        text-align: center;
+    }
+
+    #back-list {
+        margin-left: 580px;
+    }
+
+        .btn-primary:hover,
+        #back-list:hover {
+            background-color: #1E90FF;
+            color: #FFFFFF;
+        }
+</style>
