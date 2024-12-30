@@ -96,6 +96,18 @@ namespace DBFlightManagement.Pages.Staffs
                 return Page();
             }
 
+            // Gán role "Staff" cho user
+            var roleResult = await _userManager.AddToRoleAsync(user, "Staff");
+            if (!roleResult.Succeeded)
+            {
+                // Hiển thị lỗi nếu việc gán role thất bại
+                foreach (var error in roleResult.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+                return Page();
+            }
+
             // 2. Tạo Staff và gán Email
             var newStaff = new Staff
             {
@@ -115,5 +127,6 @@ namespace DBFlightManagement.Pages.Staffs
             // 3. Chuyển hướng về trang danh sách hoặc chi tiết
             return RedirectToPage("Index");
         }
+
     }
 }
