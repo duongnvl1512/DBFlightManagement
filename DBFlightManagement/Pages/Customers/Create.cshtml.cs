@@ -91,6 +91,18 @@ namespace DBFlightManagement.Pages.Customers
                 return Page();
             }
 
+            // Gán role "Customer" cho user
+            var roleResult = await _userManager.AddToRoleAsync(user, "Customer");
+            if (!roleResult.Succeeded)
+            {
+                // Hiển thị lỗi nếu việc gán role thất bại
+                foreach (var error in roleResult.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+                return Page();
+            }
+
             // 2. Tạo Customer và gán Email
             var newCustomer = new Customer
             {
@@ -109,5 +121,6 @@ namespace DBFlightManagement.Pages.Customers
             // 3. Chuyển hướng về trang danh sách hoặc chi tiết
             return RedirectToPage("Index");
         }
+
     }
 }
