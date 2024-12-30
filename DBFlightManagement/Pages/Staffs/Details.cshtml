@@ -1,0 +1,66 @@
+﻿@page
+@model DBFlightManagement.Pages.Staffs.DetailsModel
+@{
+    ViewData["Title"] = "Staff Details";
+}
+
+<h1>Staff Details</h1>
+
+<div>
+    <h4>Staff</h4>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Email
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Staff.Email
+        </dd>
+
+        <dt class="col-sm-2">
+            First Name
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Staff.FirstName
+        </dd>
+
+        <dt class="col-sm-2">
+            Last Name
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Staff.LastName
+        </dd>
+
+        <dt class="col-sm-2">
+            Personal ID
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Staff.PersonalId
+        </dd>
+
+        <dt class="col-sm-2">
+            Phone Number
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Staff.PhoneNumber
+        </dd>
+
+        <dt class="col-sm-2">
+            Address
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Staff.Address
+        </dd>
+
+        <dt class="col-sm-2">
+            Position
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Staff.Position
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Staff.StaffId" class="btn btn-primary">Edit</a>
+    <a asp-page="./Index" class="btn btn-secondary">Back to List</a>
+</div>

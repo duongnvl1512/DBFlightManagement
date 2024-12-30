@@ -9,7 +9,7 @@ using DBFlightManagement.Data;
 using DBFlightManagement.Models;
 using Microsoft.AspNetCore.Authorization;
 
-namespace DBFlightManagement.Pages.Customers
+namespace DBFlightManagement.Pages.Staffs
 {
     [Authorize(Roles = "Admin,Staff")]
     public class IndexModel : PageModel
@@ -21,25 +21,25 @@ namespace DBFlightManagement.Pages.Customers
             _context = context;
         }
 
-        public IList<Customer> Customer { get;set; } = default!;
+        public IList<Staff> Staff { get; set; } = default!;
 
         [BindProperty(SupportsGet = true)]
         public string SearchTerm { get; set; }
 
         public async Task OnGetAsync()
         {
-            var query = _context.Customers.AsQueryable();
+            var query = _context.Staffs.AsQueryable();
             if (!string.IsNullOrEmpty(SearchTerm))
             {
-                query = query.Where(c => c.Email.Contains(SearchTerm) ||
-                                         c.FirstName.Contains(SearchTerm) ||
-                                         c.LastName.Contains(SearchTerm) ||
-                                         c.PersonalId.Contains(SearchTerm) ||
-                                         c.PhoneNumber.Contains(SearchTerm) ||
-                                         c.Address.Contains(SearchTerm));
+                query = query.Where(s => s.Email.Contains(SearchTerm) ||
+                                         s.FirstName.Contains(SearchTerm) ||
+                                         s.LastName.Contains(SearchTerm) ||
+                                         s.PersonalId.Contains(SearchTerm) ||
+                                         s.PhoneNumber.Contains(SearchTerm) ||
+                                         s.Address.Contains(SearchTerm));
             }
 
-            Customer = await query.ToListAsync();
+            Staff = await query.ToListAsync();
         }
     }
 }

@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using DBFlightManagement.Constants;
 using DBFlightManagement.Data;
 using DBFlightManagement.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace DBFlightManagement.Pages.Customers
+namespace DBFlightManagement.Pages.Staffs
 {
     public class CreateModel : PageModel
     {
@@ -56,6 +57,10 @@ namespace DBFlightManagement.Pages.Customers
             [StringLength(200)]
             [Display(Name = "Address")]
             public string Address { get; set; }
+
+            [Required]
+            [Display(Name = "Position")]
+            public Position Position { get; set; }
         }
 
         public void OnGet()
@@ -91,8 +96,8 @@ namespace DBFlightManagement.Pages.Customers
                 return Page();
             }
 
-            // 2. Tạo Customer và gán Email
-            var newCustomer = new Customer
+            // 2. Tạo Staff và gán Email
+            var newStaff = new Staff
             {
                 AspNetUserId = user.Id,    // Liên kết IdentityUser
                 Email = user.Email,        // Gán Email từ IdentityUser
@@ -100,10 +105,11 @@ namespace DBFlightManagement.Pages.Customers
                 LastName = Input.LastName,
                 PersonalId = Input.PersonalId,
                 PhoneNumber = Input.PhoneNumber,
-                Address = Input.Address
+                Address = Input.Address,
+                Position = Input.Position
             };
 
-            _context.Customers.Add(newCustomer);
+            _context.Staffs.Add(newStaff);
             await _context.SaveChangesAsync();
 
             // 3. Chuyển hướng về trang danh sách hoặc chi tiết

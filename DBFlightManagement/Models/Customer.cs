@@ -27,6 +27,10 @@ namespace DBFlightManagement.Models
         [StringLength(50)]
         public string LastName { get; set; }
 
+        [Required(ErrorMessage = "Personal ID is required.")]
+        [StringLength(20)]
+        public string PersonalId { get; set; }
+
         [Phone(ErrorMessage = "Invalid phone number.")]
         [StringLength(20)]
         public string? PhoneNumber { get; set; }
