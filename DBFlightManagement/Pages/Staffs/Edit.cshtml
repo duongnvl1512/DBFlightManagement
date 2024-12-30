@@ -1,0 +1,47 @@
+﻿@page
+@model DBFlightManagement.Pages.Staffs.EditModel
+@{
+    ViewData["Title"] = "Edit Staff";
+}
+
+<h1>Edit Staff</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="Email" class="control-label">Email</label>
+        <input id="Email" name="Email" class="form-control" value="@Model.Input.Email" readonly />
+    </div>
+
+    <div class="form-group">
+        <label for="FirstName" class="control-label">First Name</label>
+        <input id="FirstName" name="FirstName" class="form-control" value="@Model.Input.FirstName" placeholder="Enter first name" />
+    </div>
+
+    <div class="form-group">
+        <label for="LastName" class="control-label">Last Name</label>
+        <input id="LastName" name="LastName" class="form-control" value="@Model.Input.LastName" placeholder="Enter last name" />
+    </div>
+
+    <div class="form-group">
+        <label for="PersonalId" class="control-label">Personal ID</label>
+        <input id="PersonalId" name="PersonalId" class="form-control" value="@Model.Input.PersonalId" placeholder="Enter personal ID" />
+    </div>
+
+    <div class="form-group">
+        <label for="PhoneNumber" class="control-label">Phone Number</label>
+        <input id="PhoneNumber" name="PhoneNumber" class="form-control" value="@Model.Input.PhoneNumber" placeholder="Enter phone number" />
+    </div>
+
+    <div class="form-group">
+        <label for="Address" class="control-label">Address</label>
+        <input id="Address" name="Address" class="form-control" value="@Model.Input.Address" placeholder="Enter address" />
+    </div>
+
+    <div class="form-group">
+        <label for="Position" class="control-label">Position</label>
+        <input id="Position" name="Position" class="form-control" value="@Model.Input.Position" readonly />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="./Index" class="btn btn-secondary">Cancel</a>
+</form>

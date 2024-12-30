@@ -3,7 +3,7 @@ using DBFlightManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace DBFlightManagement.Pages.Customers
+namespace DBFlightManagement.Pages.Staffs
 {
     public class EditModel : PageModel
     {
@@ -15,14 +15,14 @@ namespace DBFlightManagement.Pages.Customers
         }
 
         [BindProperty]
-        public Customer Input { get; set; }
+        public Staff Input { get; set; }
 
         public IActionResult OnGet(int id)
         {
-            var customer = _context.Customers.Find(id);
-            if (customer == null) return NotFound();
+            var staff = _context.Staffs.Find(id);
+            if (staff == null) return NotFound();
 
-            Input = customer;
+            Input = staff;
             return Page();
         }
 
@@ -30,16 +30,17 @@ namespace DBFlightManagement.Pages.Customers
         {
             if (!ModelState.IsValid) return Page();
 
-            var existing = _context.Customers.Find(Input.CustomerId);
+            var existing = _context.Staffs.Find(Input.StaffId);
             if (existing == null) return NotFound();
 
             existing.FirstName = Input.FirstName;
             existing.LastName = Input.LastName;
-            existing.PersonalId = Input.PersonalId; 
+            existing.PersonalId = Input.PersonalId;
             existing.PhoneNumber = Input.PhoneNumber;
             existing.Address = Input.Address;
+            existing.Position = Input.Position;
 
-            _context.Customers.Update(existing);
+            _context.Staffs.Update(existing);
             _context.SaveChanges();
 
             return RedirectToPage("Index");

@@ -1,0 +1,59 @@
+﻿@page
+@model DBFlightManagement.Pages.Staffs.IndexModel
+@{
+    ViewData["Title"] = "Staff List";
+}
+
+<h1>Staff List</h1>
+
+<form method="get">
+    <div class="form-group">
+        <input type="text" name="SearchTerm" value="@Model.SearchTerm" class="form-control" placeholder="Search by name, email, or ID..." />
+        <button type="submit" class="btn btn-primary mt-2">Search</button>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Personal ID</th>
+            <th>Phone Number</th>
+            <th>Address</th>
+            <th>Position</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Staff != null && Model.Staff.Any())
+        {
+            foreach (var staff in Model.Staff)
+            {
+                <tr>
+                    <td>@staff.Email</td>
+                    <td>@staff.FirstName</td>
+                    <td>@staff.LastName</td>
+                    <td>@staff.PersonalId</td>
+                    <td>@staff.PhoneNumber</td>
+                    <td>@staff.Address</td>
+                    <td>@staff.Position</td>
+                    <td>
+                        <a asp-page="./Details" asp-route-id="@staff.StaffId" class="btn btn-info btn-sm">Details</a>
+                        <a asp-page="./Edit" asp-route-id="@staff.StaffId" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-page="./Delete" asp-route-id="@staff.StaffId" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8" class="text-center">No staff found.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-page="./Create" class="btn btn-success">Add New Staff</a>

@@ -1,0 +1,75 @@
+﻿@page
+@model DBFlightManagement.Pages.Staffs.CreateModel
+@{
+    ViewData["Title"] = "Create Staff";
+}
+
+<h1>Create Staff</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Input.Email" class="control-label"></label>
+        <input asp-for="Input.Email" class="form-control" placeholder="Enter email" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Input.Password" class="control-label"></label>
+        <input asp-for="Input.Password" class="form-control" placeholder="Enter password" type="password" />
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Input.ConfirmPassword" class="control-label"></label>
+        <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Confirm password" type="password" />
+        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Input.FirstName" class="control-label"></label>
+        <input asp-for="Input.FirstName" class="form-control" placeholder="Enter first name" />
+        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Input.LastName" class="control-label"></label>
+        <input asp-for="Input.LastName" class="form-control" placeholder="Enter last name" />
+        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Input.PersonalId" class="control-label"></label>
+        <input asp-for="Input.PersonalId" class="form-control" placeholder="Enter personal ID" />
+        <span asp-validation-for="Input.PersonalId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Input.PhoneNumber" class="control-label"></label>
+        <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Enter phone number" />
+        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Input.Address" class="control-label"></label>
+        <input asp-for="Input.Address" class="form-control" placeholder="Enter address" />
+        <span asp-validation-for="Input.Address" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Input.Position" class="control-label"></label>
+        <select asp-for="Input.Position" class="form-control">
+            <option value="">Select position</option>
+            @foreach (var position in Enum.GetValues(typeof(DBFlightManagement.Constants.Position)))
+            {
+                <option value="@position">@position</option>
+            }
+        </select>
+        <span asp-validation-for="Input.Position" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

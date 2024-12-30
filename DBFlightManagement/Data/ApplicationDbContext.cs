@@ -47,6 +47,7 @@ namespace DBFlightManagement.Data
         public DbSet<DBFlightManagement.Models.Customer> Customers { get; set; } = default!;
         public DbSet<DBFlightManagement.Models.Flight> Flights { get; set; } = default!;
         public DbSet<DBFlightManagement.Models.Ticket> Tickets { get; set; } = default!;
+        public DbSet<DBFlightManagement.Models.Staff> Staffs { get; set; } = default!;
 
     }
 }
