@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace DBFlightManagement.Pages.Flights
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Staff")]
     public class CreateModel : PageModel
     {
         private readonly DBFlightManagement.Data.ApplicationDbContext _context;
