@@ -5,6 +5,7 @@
 }
 
 <h1>Staff List</h1>
+<a asp-page="./Create" class="btn btn-success">Add New Staff</a>
 
 <form method="get">
     <div class="form-group">
@@ -12,7 +13,6 @@
         <button type="submit" class="btn btn-primary mt-2">Search</button>
     </div>
 </form>
-
 <table class="table table-striped">
     <thead>
         <tr>
@@ -56,4 +56,165 @@
     </tbody>
 </table>
 
-<a asp-page="./Create" class="btn btn-success">Add New Staff</a>
+
+<style>
+    body {
+        background: linear-gradient(135deg, white, #2F4F4F);
+        color: #FFFFFF;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #FFFFFF;
+        margin-bottom: 20px;
+    }
+
+    .btn-create-new {
+        margin-left: 100px;
+        margin-bottom: 10px;
+        display: inline-block;
+        background-color: grey;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+        .btn-create-new:hover {
+            background-color: black;
+            color: #FFFFFF;
+        }
+
+    .search-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        gap: 10px;
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .search-input {
+        padding: 10px;
+        margin-left: 100px;
+        border: 2px solid #1E90FF;
+        border-radius: 5px;
+        font-size: 1rem;
+        width: 40%;
+        background-color: #2F4F4F;
+        color: #FFFFFF;
+    }
+
+        .search-input::placeholder {
+            color: #B0C4DE;
+        }
+
+    .search-btn {
+        background-color: #1E90FF;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+        .search-btn:hover {
+            background-color: #4682B4;
+        }
+
+    .table {
+        width: 100%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: #2F4F4F;
+        color: #FFFFFF;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+        .table th, .table td {
+            color:white;
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #1E90FF;
+            white-space: nowrap;
+        }
+
+        .table th {
+            background-color: #1E90FF;
+            color: #FFFFFF;
+            font-size: 1.2rem;
+        }
+
+        .table tr:hover {
+            background-color: #4682B4;
+        }
+
+    .action-buttons {
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        flex-wrap: nowrap;
+    }
+    .btn-success{
+        margin-bottom: 10px;
+    }
+    .btn-action {
+        display: inline-block;
+        padding: 10px 15px;
+        font-size: 1rem;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #FFFFFF;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+
+    .btn-edit {
+        background-color: #4CAF50;
+    }
+
+        .btn-edit:hover {
+            background-color: #45A049;
+            color: white;
+        }
+
+    .btn-details {
+        background-color: #2196F3;
+    }
+
+        .btn-details:hover {
+            background-color: #0B7DDB;
+            color: white;
+        }
+
+    .btn-delete {
+        background-color: #F44336;
+    }
+
+        .btn-delete:hover {
+            background-color: #D32F2F;
+            color: white;
+        }
+
+    .btn-buy {
+        background-color: #FFC107;
+    }
+
+        .btn-buy:hover {
+            background-color: #FFB300;
+        }
+</style>
