@@ -1,10 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using DBFlightManagement.Constants;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using DBFlightManagement.Data;
 using DBFlightManagement.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel.DataAnnotations;
 
 namespace DBFlightManagement.Pages.Staffs
 {
@@ -60,7 +59,7 @@ namespace DBFlightManagement.Pages.Staffs
 
             [Required]
             [Display(Name = "Position")]
-            public Position Position { get; set; }
+            public String Position { get; set; }
         }
 
         public void OnGet()

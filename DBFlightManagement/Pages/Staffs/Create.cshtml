@@ -56,27 +56,19 @@
     </div>
 
     <div class="form-group">
+        <span class="text-danger">*</span>
         <label asp-for="Input.Position" class="control-label"></label>
-        <select asp-for="Input.Position" class="form-control">
-            <option value="">Select position</option>
-            @foreach (var position in Enum.GetValues(typeof(DBFlightManagement.Constants.Position)))
-            {
-                <option value="@position">@position</option>
-            }
-        </select>
+        <input asp-for="Input.Position" class="form-control" />
         <span asp-validation-for="Input.Position" class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-primary">Create</button>
-    <div>
-        <a asp-page="Index" id="back-list">Back to List</a>
-    </div>
 </form>
-
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+
 <style>
     body {
         background: linear-gradient(135deg, white, #2F4F4F);
@@ -152,8 +144,9 @@
     #back-list {
         background-color: #2F4F4F;
         margin-left: 575px;
+        .btn-primary:hover
 
-    .btn-primary:hover {
+    {
         background-color: #4682B4;
     }
 

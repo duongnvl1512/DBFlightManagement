@@ -1,50 +1,79 @@
 ﻿@page
 @model DBFlightManagement.Pages.Staffs.EditModel
+
 @{
-    ViewData["Title"] = "Edit Staff";
+    ViewData["Title"] = "Edit";
 }
 
-<h1>Edit Staff</h1>
+<h1>Edit</h1>
 
-<form method="post">
-    <div class="form-group">
-        <label for="Email" class="control-label">Email</label>
-        <input id="Email" name="Email" class="form-control" value="@Model.Input.Email" readonly />
+<h4>Staff</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Staff.StaffId" />
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Staff.AspNetUserId" class="control-label"></label>
+                <select asp-for="Staff.AspNetUserId" class="form-control" asp-items="ViewBag.AspNetUserId"></select>
+                <span asp-validation-for="Staff.AspNetUserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Staff.Email" class="control-label"></label>
+                <input asp-for="Staff.Email" class="form-control" />
+                <span asp-validation-for="Staff.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Staff.FirstName" class="control-label"></label>
+                <input asp-for="Staff.FirstName" class="form-control" />
+                <span asp-validation-for="Staff.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Staff.LastName" class="control-label"></label>
+                <input asp-for="Staff.LastName" class="form-control" />
+                <span asp-validation-for="Staff.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Staff.PersonalId" class="control-label"></label>
+                <input asp-for="Staff.PersonalId" class="form-control" />
+                <span asp-validation-for="Staff.PersonalId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staff.PhoneNumber" class="control-label"></label>
+                <input asp-for="Staff.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Staff.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Staff.Address" class="control-label"></label>
+                <input asp-for="Staff.Address" class="form-control" />
+                <span asp-validation-for="Staff.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Staff.Position" class="control-label"></label>
+                <input asp-for="Staff.Position" class="form-control" />
+                <span asp-validation-for="Staff.Position" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='@Url.Page("./Index")'">Back to List</button>
+            </div>
+        </form>
     </div>
+</div>
 
-    <div class="form-group">
-        <label for="FirstName" class="control-label">First Name</label>
-        <input id="FirstName" name="FirstName" class="form-control" value="@Model.Input.FirstName" placeholder="Enter first name" />
-    </div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
 
-    <div class="form-group">
-        <label for="LastName" class="control-label">Last Name</label>
-        <input id="LastName" name="LastName" class="form-control" value="@Model.Input.LastName" placeholder="Enter last name" />
-    </div>
-
-    <div class="form-group">
-        <label for="PersonalId" class="control-label">Personal ID</label>
-        <input id="PersonalId" name="PersonalId" class="form-control" value="@Model.Input.PersonalId" placeholder="Enter personal ID" />
-    </div>
-
-    <div class="form-group">
-        <label for="PhoneNumber" class="control-label">Phone Number</label>
-        <input id="PhoneNumber" name="PhoneNumber" class="form-control" value="@Model.Input.PhoneNumber" placeholder="Enter phone number" />
-    </div>
-
-    <div class="form-group">
-        <label for="Address" class="control-label">Address</label>
-        <input id="Address" name="Address" class="form-control" value="@Model.Input.Address" placeholder="Enter address" />
-    </div>
-
-    <div class="form-group">
-        <label for="Position" class="control-label">Position</label>
-        <input id="Position" name="Position" class="form-control" value="@Model.Input.Position" readonly />
-    </div>
-
-    <button type="submit" class="btn btn-primary">Save</button>
-    <a href="./Index" class="btn btn-secondary">Cancel</a>
-</form>
 <style>
     body {
         background: linear-gradient(135deg, white, #2F4F4F);

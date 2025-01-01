@@ -40,7 +40,7 @@ namespace DBFlightManagement.Models
 
         [Required(ErrorMessage = "Job Title is required.")]
         [StringLength(100)]
-        public Position Position { get; set; }
+        public String Position { get; set; }
 
         // Thuộc tính navigation tham chiếu bảng AspNetUsers (Identity)
         [ForeignKey(nameof(AspNetUserId))]
