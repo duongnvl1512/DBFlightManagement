@@ -3,383 +3,35 @@
 @{
     ViewData["Title"] = "Flight Management - Dashboard";
 }
-
-<style>
-    /* CSS tùy chỉnh cho giao diện quản lý chuyến bay */
-    .dashboard-container {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        margin: 2rem auto;
-        max-width: 1200px;
-        padding: 1rem;
-        background-color: #f8f9fa;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .dashboard-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 2rem;
-        background-color: #343a40;
-        color: white;
-        border-radius: 8px 8px 0 0;
-    }
-
-        .dashboard-header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-        }
-
-        .dashboard-header button {
-            background-color: #28a745;
-            border: none;
-            color: white;
-            padding: 0.5rem 1rem;
-            font-size: 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-            .dashboard-header button:hover {
-                background-color: #218838;
-            }
-
-    .dashboard-stats {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-
-    .stat-card {
-        flex: 1 1 calc(25% - 1rem);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem;
-        background-color: white;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        text-align: center;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-        .stat-card h2 {
-            margin: 0.5rem 0;
-            font-size: 1.25rem;
-            color: #343a40;
-        }
-
-        .stat-card p {
-            margin: 0;
-            color: #6c757d;
-            font-size: 1rem;
-        }
-
-    .dashboard-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 2rem;
-        font-size: 1rem;
-    }
-
-        .dashboard-table th, .dashboard-table td {
-            border: 1px solid #ddd;
-            padding: 1rem;
-            text-align: left;
-        }
-
-        .dashboard-table th {
-            background-color: #343a40;
-            color: white;
-        }
-
-        .dashboard-table tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-
-    .dashboard-footer {
-        text-align: center;
-        margin-top: 2rem;
-        padding: 1rem;
-        background-color: #343a40;
-        color: white;
-        border-radius: 0 0 8px 8px;
-    }
-    /* Destinations Section */
-    .destinations {
-        padding: 5rem 2rem;
-    }
-
-        .destinations h2 {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-    .destination-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .destination-card {
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease;
-    }
-
-        .destination-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .destination-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-    .card-content {
-        padding: 1.5rem;
-    }
-
-        .card-content h3 {
-            margin-bottom: 0.5rem;
-        }
-
-    .price {
-        color: #000000;
-        font-weight: 600;
-        font-size: 1.2rem;
-    }
-    /* Modal styles */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.4);
-        padding-top: 50px;
-    }
-
-    .modal-content {
-        background-color: #fff;
-        margin: 5% auto;
-        padding: 20px;
-        border-radius: 8px;
-        width: 80%;
-        max-width: 600px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Close button */
-    .close-btn {
-        font-size: 30px;
-        font-weight: bold;
-        color: #aaa;
-        float: right;
-        cursor: pointer;
-    }
-
-        .close-btn:hover,
-        .close-btn:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-    /* Form input styles */
-    .form-group {
-        margin-bottom: 15px;
-    }
-
-    label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 8px;
-        color: #333;
-    }
-
-    input[type="text"],
-    input[type="datetime-local"],
-    select {
-        width: 100%;
-        padding: 10px;
-        margin: 5px 0 15px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 16px;
-        box-sizing: border-box;
-    }
-
-        input[type="text"]:focus,
-        select:focus {
-            border-color: #4CAF50;
-            outline: none;
-        }
-
-    /* Button styles */
-    .btn {
-        padding: 10px 20px;
-        font-size: 16px;
-        font-weight: bold;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    .btn-primary {
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-    }
-
-        .btn-primary:hover {
-            background-color: #45a049;
-        }
-
-    .btn-danger {
-        background-color: #f44336;
-        color: white;
-        border: none;
-    }
-
-        .btn-danger:hover {
-            background-color: #e53935;
-        }
-
-    .btn-secondary {
-        background-color: #ccc;
-        color: #333;
-        border: none;
-    }
-
-        .btn-secondary:hover {
-            background-color: #bbb;
-        }
-
-    /* Form actions */
-    .form-actions {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-        .form-actions button {
-            width: 48%;
-        }
-
-    /* Service Card styles */
-    .service-card {
-        text-align: center;
-        background-color: #f8f8f8;
-        padding: 20px;
-        margin: 15px;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-        .service-card:hover {
-            background-color: #f1f1f1;
-            transform: scale(1.05);
-        }
-
-    .service-icon {
-        font-size: 40px;
-        margin-bottom: 10px;
-    }
-
-    .service-card h3 {
-        font-size: 18px;
-        color: #333;
-        font-weight: bold;
-    }
-
-    /* Table styles */
-    .dashboard-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 30px;
-    }
-
-        .dashboard-table th, .dashboard-table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .dashboard-table th {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .dashboard-table tr:hover {
-            background-color: #f1f1f1;
-        }
-
-    h2 {
-        text-align: center;
-    }
-
-    /* Actions Column button styles */
-    button {
-        padding: 6px 12px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-        button:hover {
-            background-color: #f1f1f1;
-        }
-
-        /* Edit button */
-        button[onclick="openModal('edit')"] {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-            button[onclick="openModal('edit')"]:hover {
-                background-color: #45a049;
-            }
-
-        /* Delete button */
-        button[onclick="openModal('delete')"] {
-            background-color: #f44336;
-            color: white;
-        }
-
-            button[onclick="openModal('delete')"]:hover {
-                background-color: #e53935;
-            }
-
-        /* Add button */
-        button[onclick="openModal('add')"] {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-            button[onclick="openModal('add')"]:hover {
-                background-color: #45a049;
-            }
-
-</style>
-
 <div class="dashboard-container">
+    <!-- Header Section -->
+    <header class="dashboard-header">
+        <h1>Welcome to DBFlight Management System!</h1>
+    </header>
+
+    <!-- Statistics Section -->
+    <section class="dashboard-stats">
+        <div class="stat-grid">
+            <div class="stat-card">
+                <h3>Total Flights</h3>
+                <p>1,200+</p>
+            </div>
+            <div class="stat-card">
+                <h3>Destinations</h3>
+                <p>50+</p>
+            </div>
+            <div class="stat-card">
+                <h3>Airlines</h3>
+                <p>10+</p>
+            </div>
+            <div class="stat-card">
+                <h3>Happy Customers</h3>
+                <p>100,000+</p>
+            </div>
+        </div>
+    </section>
+
+
     <!-- Popular Destinations -->
     <section class="destinations" id="flights">
         <h2>Available Flights</h2>
@@ -387,241 +39,472 @@
             <div class="destination-card">
                 <div class="card-content">
                     <h3>Vũng Tàu</h3>
-                    <span class="price">đ 1.687.000</span>
+                    <span class="price">đ 1.500.000</span>
                 </div>
             </div>
             <div class="destination-card">
                 <div class="card-content">
                     <h3>Đà Nẵng</h3>
-                    <span class="price">đ 1.793.200</span>
+                    <span class="price">đ 2.000.000</span>
                 </div>
             </div>
             <div class="destination-card">
                 <div class="card-content">
                     <h3>Hội An</h3>
-                    <span class="price">đ 2.242.500</span>
+                    <span class="price">đ 2.500.000</span>
                 </div>
             </div>
             <div class="destination-card">
                 <div class="card-content">
                     <h3>Nha Trang</h3>
-                    <span class="price">đ 1.687.000</span>
+                    <span class="price">đ 1.800.000</span>
+                </div>
+            </div>
+            <div class="destination-card">
+                <div class="card-content">
+                    <h3>Hồ Chí Minh</h3>
+                    <span class="price">đ 1.200.000</span>
+                </div>
+            </div>
+            <div class="destination-card">
+                <div class="card-content">
+                    <h3>Tây Ninh</h3>
+                    <span class="price">đ 1.300.000</span>
+                </div>
+            </div>
+            <div class="destination-card">
+                <div class="card-content">
+                    <h3>Nam Định</h3>
+                    <span class="price">đ 1.700.000</span>
+                </div>
+            </div>
+            <div class="destination-card">
+                <div class="card-content">
+                    <h3>Hà Nội</h3>
+                    <span class="price">đ 2.200.000</span>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Modify Flight Management -->
-    <section class="modify-services" id="flight-management">
-        <h2>Flight Management</h2>
-        <div class="services-container">
-            <!-- Add Flight Card -->
-            <div class="service-card" onclick="openModal('add')">
-                <div class="service-icon">
-                    <i class="fas fa-plus-circle"></i>
-                </div>
-                <h3>Add Flight</h3>
+
+    <!-- Airlines Section -->
+    <section class="airlines" id="airlines">
+        <h2>Our Airlines</h2>
+        <div class="airline-grid">
+            <div class="airline-card">
+                <p>Vietnam Airlines</p>
             </div>
+            <div class="airline-card">
+                <p>Vietjet Air</p>
+            </div>
+            <div class="airline-card">
+                <p>Bamboo Airways</p>
+            </div>
+            <div class="airline-card">
+                <p>Jetstar Pacific</p>
+            </div>
+            <div class="airline-card">
+                <p>VASCO</p>
+            </div>
+            <div class="airline-card">
+                <p>AirAsia</p>
+            </div>
+            <div class="airline-card">
+                <p>Korean Air</p>
+            </div>
+            <div class="airline-card">
+                <p>Singapore Airlines</p>
+            </div>
+            <div class="airline-card">
+                <p>Qatar Airways</p>
+            </div>
+            <div class="airline-card">
+                <p>American Airlines</p>
+            </div>
+            <div class="airline-card">
+                <p>All Nippon Airways</p>
+            </div>
+            <div class="airline-card">
+                <p>Cathay Pacific</p>
+            </div>
+        </div>
     </section>
 
-    <!-- Modal Structure -->
-    <!-- Add Flight Modal -->
-    <div id="addModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('add')">&times;</span>
-            <div class="modal-header">
-                <h2>Add New Flight</h2>
+    <!-- Customer Testimonials -->
+    <section class="testimonials">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p>"Amazing experience! Smooth and on-time flights."</p>
+                <p>- Donald Trump</p>
             </div>
-            <form id="addFlightForm">
-                <div class="form-group">
-                    <label for="flightID">Flight ID</label>
-                    <input type="text" id="flightID" required>
-                </div>
-                <div class="form-group">
-                    <label for="origin">Origin</label>
-                    <input type="text" id="origin" required>
-                </div>
-                <div class="form-group">
-                    <label for="destination">Destination</label>
-                    <input type="text" id="destination" required>
-                </div>
-                <div class="form-group">
-                    <label for="departure">Departure Time</label>
-                    <input type="datetime-local" id="departure" required>
-                </div>
-                <div class="form-group">
-                    <label for="arrival">Arrival Time</label>
-                    <input type="datetime-local" id="arrival" required>
-                </div>
-                <div class="form-group">
-                    <label for="status">Status</label>
-                    <select id="status" required>
-                        <option value="on_time">On Time</option>
-                        <option value="delayed">Delayed</option>
-                        <option value="cancelled">Cancelled</option>
-                    </select>
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Add Flight</button>
-                    <button type="button" class="btn btn-secondary" onclick="closeModal('add')">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Delete Flight Modal -->
-    <div id="deleteModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('delete')">&times;</span>
-            <div class="modal-header">
-                <h2>Delete Flight</h2>
+            <div class="testimonial-card">
+                <p>"Affordable and reliable. Highly recommend!"</p>
+                <p>- Elon Musk</p>
             </div>
-            <form>
-                <div class="form-group">
-                    <label for="deleteFlightID">Flight ID to Delete</label>
-                    <input type="text" id="deleteFlightID" required>
-                </div>
-                <div class="form-actions">
-                    <button type="button" class="btn btn-danger" onclick="deleteFlight()">Delete Flight</button>
-                    <button type="button" class="btn btn-secondary" onclick="closeModal('delete')">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Edit Flight Modal -->
-    <div id="editModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('edit')">&times;</span>
-            <div class="modal-header">
-                <h2>Edit Flight Information</h2>
+            <div class="testimonial-card">
+                <p>"Great service and friendly staff. I'll definitely book again."</p>
+                <p>- Mike Tyson</p>
             </div>
-            <form id="editFlightForm">
-                <div class="form-group">
-                    <label for="editFlightID">Flight ID</label>
-                    <input type="text" id="editFlightID" required readonly>
-                </div>
-                <div class="form-group">
-                    <label for="editOrigin">New Origin</label>
-                    <input type="text" id="editOrigin">
-                </div>
-                <div class="form-group">
-                    <label for="editDestination">New Destination</label>
-                    <input type="text" id="editDestination">
-                </div>
-                <div class="form-group">
-                    <label for="editDeparture">New Departure Time</label>
-                    <input type="datetime-local" id="editDeparture">
-                </div>
-                <div class="form-group">
-                    <label for="editArrival">New Arrival Time</label>
-                    <input type="datetime-local" id="editArrival">
-                </div>
-                <div class="form-group">
-                    <label for="editStatus">New Status</label>
-                    <select id="editStatus">
-                        <option value="on_time">On Time</option>
-                        <option value="delayed">Delayed</option>
-                        <option value="cancelled">Cancelled</option>
-                    </select>
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                    <button type="button" class="btn btn-secondary" onclick="closeModal('edit')">Cancel</button>
-                </div>
-            </form>
         </div>
-    </div>
+    </section>
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+        &copy; DBFlightManagement System. All Rights Reserved.
+    </footer>
+</div>
 
 
-    <!-- Table to display flight data -->
-    <table class="dashboard-table">
-        <thead>
-            <tr>
-                <th>Flight ID</th>
-                <th>Origin</th>
-                <th>Destination</th>
-                <th>Departure</th>
-                <th>Arrival</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody id="flightTableBody">
-            <!-- Dynamic rows will be inserted here -->
-        </tbody>
-    </table>
-
-    <!-- Modal Open and Close-->
-    <script>
-        let flights = [
-            { id: "FL001", origin: "Hanoi", destination: "Ho Chi Minh City", departure: "08:00 AM", arrival: "10:00 AM", status: "On-Time" },
-            { id: "FL002", origin: "Da Nang", destination: "Nha Trang", departure: "09:30 AM", arrival: "11:00 AM", status: "Delayed" }
-        ];
-
-        // Open modal for add, edit, or delete
-        function openModal(type) {
-            var modal = document.getElementById(type + 'Modal');
-            modal.style.display = 'block';
+    <style>
+        body {
+            background: linear-gradient(135deg, white, #2F4F4F);
         }
-        function openModal(action, index = null) {
-            if (action === 'edit') {
-                const flight = flights[index];
-                document.getElementById("editFlightID").value = flight.id;
-                document.getElementById("editOrigin").value = flight.origin;
-                document.getElementById("editDestination").value = flight.destination;
-                document.getElementById("editDeparture").value = flight.departure;
-                document.getElementById("editArrival").value = flight.arrival;
-                document.getElementById("editStatus").value = flight.status;
-            } else if (action === 'delete') {
-                document.getElementById("deleteFlightID").value = flights[index].id;
+
+        /* CSS tùy chỉnh cho giao diện quản lý chuyến bay */
+        .dashboard-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            padding: 1rem;
+            background-color: ghostwhite;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #343a40;
+            color: white;
+            border-radius: 8px 8px 0 0;
+        }
+
+            .dashboard-header h1 {
+                margin: 0;
+                font-size: 1.5rem;
             }
 
-            document.getElementById(action + "Modal").style.display = "block";
+            .dashboard-header button {
+                background: linear-gradient(135deg, #1E90FF, #2F4F4F);
+                border: none;
+                color: white;
+                padding: 0.5rem 1rem;
+                font-size: 1rem;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+        .dashboard-stats {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
-        // Close modal
-        function closeModal(action) {
-            document.getElementById(action + "Modal").style.display = "none";
+        .stat-card {
+            flex: 1 1 calc(25% - 1rem);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        // Submit Add Flight Form
-        document.getElementById("addFlightForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-            const flight = {
-                id: document.getElementById("flightID").value,
-                origin: document.getElementById("origin").value,
-                destination: document.getElementById("destination").value,
-                departure: document.getElementById("departure").value,
-                arrival: document.getElementById("arrival").value,
-                status: document.getElementById("status").value
-            };
-            flights.push(flight);
-            updateTable();
-            closeModal('add');
-        });
+            .stat-card h2 {
+                margin: 0.5rem 0;
+                font-size: 1.25rem;
+                color: #343a40;
+            }
 
-        // Update Table with Flights
-        function updateTable() {
-            const tableBody = document.getElementById("flightTableBody");
-            tableBody.innerHTML = "";
-            flights.forEach((flight, index) => {
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                            <td>${flight.id}</td>
-                            <td>${flight.origin}</td>
-                            <td>${flight.destination}</td>
-                            <td>${flight.departure}</td>
-                            <td>${flight.arrival}</td>
-                            <td>${flight.status}</td>
-                            <td>
-                                <button onclick="openModal('edit', ${index})">Edit</button>
-                                <button onclick="openModal('delete', ${index})">Delete</button>
-                            </td>
-                        `;
-                tableBody.appendChild(row);
-            });
+            .stat-card p {
+                margin: 0;
+                color: #6c757d;
+                font-size: 1rem;
+            }
+
+        .dashboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            font-size: 1rem;
         }
 
-        // Initial Table Load
-        updateTable();
-    </script>
+            .dashboard-table th, .dashboard-table td {
+                border: 1px solid #ddd;
+                padding: 1rem;
+                text-align: left;
+            }
+
+            .dashboard-table th {
+                background-color: #343a40;
+                color: white;
+            }
+
+            .dashboard-table tr:nth-child(even) {
+                background-color: #f8f9fa;
+            }
+
+        .dashboard-footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #343a40;
+            color: white;
+            border-radius: 0 0 8px 8px;
+        }
+    /* Statistics Section */
+    .dashboard-stats {
+        padding: 3rem 2rem;
+        background-color: #f8f9fa;
+        text-align: center;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+
+        .dashboard-stats h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #343a40;
+        }
+
+    .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .stat-card {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+    }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-card h3 {
+            font-size: 1.5rem;
+            color: #343a40;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            font-size: 1.2rem;
+            color: #6c757d;
+            margin: 0;
+        }
+        /* Destinations Section */
+        .destinations {
+            padding: 5rem 2rem;
+            background-color: #f8f9fa;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+            .destinations h2 {
+                font-size: 2rem;
+                text-align: center;
+                margin-bottom: 50px;
+            }
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .destination-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+            .destination-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .destination-card img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+            .card-content h3 {
+                margin-bottom: 0.5rem;
+            }
+
+        .price {
+            color: #000000;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        /* Airlines Section */
+        .airlines {
+            padding: 5rem 2rem;
+            background-color: #f8f9fa;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+            .airlines h2 {
+                font-size: 2rem;
+                margin-bottom: 50px;
+            }
+
+        .airline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .airline-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .airline-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            .airline-card img {
+                width: 100px;
+                height: auto;
+                margin-bottom: 1rem;
+            }
+
+            .airline-card p {
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #343a40;
+                margin: 0;
+            }
+
+        /* Service Card styles */
+        .service-card {
+            text-align: center;
+            background-color: #f8f8f8;
+            padding: 20px;
+            margin: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            .service-card:hover {
+                background-color: #f1f1f1;
+                transform: scale(1.05);
+            }
+
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+        }
+    /* Testimonials Section */
+    .testimonials {
+        padding: 5rem 2rem;
+        background-color: #f8f9fa;
+        text-align: center;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+
+        .testimonials h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #343a40;
+        }
+
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .testimonial-card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+    .testimonial-text {
+        font-size: 1.2rem;
+        color: #343a40;
+        margin-bottom: 1rem;
+        font-style: italic;
+    }
+
+    .testimonial-author {
+        font-size: 1rem;
+        color: #6c757d;
+        font-weight: bold;
+    }
+    /* Footer Section */
+    .dashboard-footer {
+        text-align: center;
+        padding: 1.5rem;
+        background-color: #343a40;
+        color: white;
+        border-radius: 0 0 8px 8px;
+        margin-top: 2rem;
+    }
+
+        .dashboard-footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+    </style>

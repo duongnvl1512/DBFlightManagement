@@ -8,7 +8,6 @@
         Layout = "/Areas/Identity/Pages/_Layout.cshtml";
     }
 }
-
 <h1>Manage your account</h1>
 
 <div>
@@ -27,3 +26,80 @@
 @section Scripts {
     @RenderSection("Scripts", required: false)
 }
+<style>
+    body {
+        background: linear-gradient(135deg, white, #2F4F4F);
+        color: #FFFFFF;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #FFFFFF;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        background-color: rgba(47, 79, 79, 0.9);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        margin: 20px auto;
+        width: 80%;
+    }
+
+    .manage-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .manage-nav {
+        background-color: #2F4F4F;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        width: 25%;
+    }
+
+    .manage-content {
+        background-color: #2F4F4F;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        width: 70%;
+    }
+
+    #back-home:hover {
+        background-color: #1E90FF;
+    }
+
+    a {
+        color: #1E90FF;
+        text-decoration: none;
+        font-size: 1.2rem;
+    }
+
+        a:hover {
+            color: #4682B4;
+        }
+
+    hr {
+        border: 0;
+        height: 1px;
+        background: #1E90FF;
+        margin-bottom: 20px;
+    }
+</style>

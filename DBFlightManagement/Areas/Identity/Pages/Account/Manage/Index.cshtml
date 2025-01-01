@@ -4,7 +4,6 @@
     ViewData["Title"] = "Profile";
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
-
 <h3>@ViewData["Title"]</h3>
 <partial name="_StatusMessage" for="StatusMessage" />
 <div class="row">
@@ -28,3 +27,8 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+<style>
+    .form-label {
+        color: #B0C4DE;
+    }
+</style>
