@@ -1,0 +1,122 @@
+﻿@page
+@model DBFlightManagement.Pages.IntroductionModel
+@{
+    ViewData["Title"] = "Duongbao Unique - Introduction";
+    Layout = null;
+}
+<link rel="stylesheet" href="~/css/Introduction.css" />
+
+<div class="introduction-container">
+    <div class="logo-section">
+        <img src="~/lib/DBLOGO TRANSPARENT.png" alt="Duongbao Unique Logo" class="logo" />
+        <h1>Duongbao Unique</h1>
+    </div>
+
+    <section class="introduction-section">
+        <h2>Introduction</h2>
+        <p>Welcome to <b>Duongbao Unique</b>, where innovation meets excellence in flight management. We are dedicated to delivering seamless, reliable, and efficient services to our valued clients worldwide.</p>
+    </section>
+
+    <section class="logo-meaning-section">
+        <h2>The Meaning Behind Our Logo</h2>
+        <p>
+            Our logo symbolizes global connectivity and aviation excellence. The triangle represents stability and strength, while the globe with the airplane embodies our mission to connect the world with safe and innovative flight solutions.
+        </p>
+    </section>
+
+    <section class="partners-section">
+        <h2>Our Trusted Partners</h2>
+        <p>We are proud to have collaborated with the following esteemed organizations:</p>
+        <ul>
+            <li>Global Airways</li>
+            <li>SkyHigh International</li>
+            <li>AeroConnect Solutions</li>
+            <li>FlightTech Innovations</li>
+            <li>Blue Horizon Airlines</li>
+        </ul>
+    </section>
+
+    <a href="/Index" class="back-home-btn">Back to Home</a>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ffffff, #2F4F4F);
+        color: #333;
+        margin: 0;
+        padding: 2rem;
+    }
+
+    .introduction-container {
+        max-width: 1000px;
+        padding: 2rem;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin: 0 auto;
+    }
+
+    .logo-section {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .logo {
+        height: 100px;
+        width: auto;
+        margin-bottom: 1rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        color: #343a40;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        color: #007bff;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-left: 2rem;
+    }
+
+    li {
+        margin-bottom: 0.5rem;
+    }
+
+    .introduction-section,
+    .logo-meaning-section,
+    .partners-section {
+        margin-bottom: 2rem;
+    }
+
+    .back-home-btn {
+        display: block;
+        margin-top: 2rem;
+        text-align: center;
+        padding: 0.75rem 1.25rem;
+        background-color: #6c757d;
+        color: white;
+        font-size: 1rem;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+    }
+
+    .back-home-btn:hover {
+        background-color: #495057;
+    }
+</style>
