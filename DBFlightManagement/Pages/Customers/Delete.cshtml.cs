@@ -49,11 +49,22 @@ namespace DBFlightManagement.Pages.Customers
                 return NotFound();
             }
 
-            var customer = await _context.Customers.FindAsync(id);
+            // Tìm đối tượng Customer dựa trên ID
+            var customer = await _context.Customers
+                                         .Include(c => c.IdentityUser)
+                                         .FirstOrDefaultAsync(c => c.CustomerId == id);
             if (customer != null)
             {
-                Customer = customer;
-                _context.Customers.Remove(Customer);
+                // Xóa đối tượng Customer
+                _context.Customers.Remove(customer);
+
+                // Nếu có IdentityUser liên quan, xóa cả IdentityUser
+                if (customer.IdentityUser != null)
+                {
+                    _context.Users.Remove(customer.IdentityUser);
+                }
+
+                // Lưu các thay đổi vào cơ sở dữ liệu
                 await _context.SaveChangesAsync();
             }
 

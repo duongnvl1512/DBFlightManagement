@@ -1,37 +1,67 @@
-﻿@page "{id:int}"
+﻿@page
 @model DBFlightManagement.Pages.Customers.EditModel
+
 @{
-    Layout = "~/Pages/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Edit";
 }
 
-<h2>Edit Customer</h2>
+<h1>Edit</h1>
 
-<form method="post">
-    <div class="mb-3">
-        <label asp-for="Input.FirstName"></label>
-        <input asp-for="Input.FirstName" class="form-control" />
+<h4>Customer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Customer.CustomerId" />
+            <div class="form-group" type="hidden">
+                <span class="text-danger">*</span>
+                <label asp-for="Customer.AspNetUserId" class="control-label"></label>
+                <select asp-for="Customer.AspNetUserId" class="form-control" asp-items="ViewBag.AspNetUserId"></select>
+                <span asp-validation-for="Customer.AspNetUserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Customer.Email" class="control-label"></label>
+                <input asp-for="Customer.Email" class="form-control" />
+                <span asp-validation-for="Customer.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Customer.FirstName" class="control-label"></label>
+                <input asp-for="Customer.FirstName" class="form-control" />
+                <span asp-validation-for="Customer.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Customer.LastName" class="control-label"></label>
+                <input asp-for="Customer.LastName" class="form-control" />
+                <span asp-validation-for="Customer.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Customer.PersonalId" class="control-label"></label>
+                <input asp-for="Customer.PersonalId" class="form-control" />
+                <span asp-validation-for="Customer.PersonalId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Customer.PhoneNumber" class="control-label"></label>
+                <input asp-for="Customer.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Customer.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Customer.Address" class="control-label"></label>
+                <input asp-for="Customer.Address" class="form-control" />
+                <span asp-validation-for="Customer.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='@Url.Page("./Index")'">Back to List</button>
+            </div>
+        </form>
     </div>
-    <div class="mb-3">
-        <label asp-for="Input.LastName"></label>
-        <input asp-for="Input.LastName" class="form-control" />
-    </div>
-    <div class="mb-3">
-        <label asp-for="Input.PersonalId"></label>
-        <input asp-for="Input.PersonalId" class="form-control" />
-    </div>
-    <div class="mb-3">
-        <label asp-for="Input.PhoneNumber"></label>
-        <input asp-for="Input.PhoneNumber" class="form-control" />
-    </div>
-    <div class="mb-3">
-        <label asp-for="Input.Address"></label>
-        <input asp-for="Input.Address" class="form-control" />
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-</form>
-<div>
-    <a asp-page="./Index" id="back-list">Back to List</a>
 </div>
+
 <style>
     body {
         background: linear-gradient(135deg, white, #2F4F4F);
@@ -139,3 +169,8 @@
             color: #FFFFFF;
         }
 </style>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

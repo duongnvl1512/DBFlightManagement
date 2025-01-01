@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -48,11 +49,22 @@ namespace DBFlightManagement.Pages.Staffs
                 return NotFound();
             }
 
-            var staff = await _context.Staffs.FindAsync(id);
+            // Tìm đối tượng Customer dựa trên ID
+            var staff = await _context.Staffs
+                                         .Include(c => c.IdentityUser)
+                                         .FirstOrDefaultAsync(c => c.StaffId == id);
             if (staff != null)
             {
-                Staff = staff;
-                _context.Staffs.Remove(Staff);
+                // Xóa đối tượng Customer
+                _context.Staffs.Remove(staff);
+
+                // Nếu có IdentityUser liên quan, xóa cả IdentityUser
+                if (staff.IdentityUser != null)
+                {
+                    _context.Users.Remove(staff.IdentityUser);
+                }
+
+                // Lưu các thay đổi vào cơ sở dữ liệu
                 await _context.SaveChangesAsync();
             }
 
