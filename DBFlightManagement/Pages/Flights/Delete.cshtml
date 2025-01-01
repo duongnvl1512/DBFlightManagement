@@ -53,6 +53,6 @@
     <form method="post">
         <input type="hidden" asp-for="Flight.FlightId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
+            <button type="button" class="btn btn-secondary" onclick="window.location.href='@Url.Page("Index")'">Cancel</button>
     </form>
 </div>

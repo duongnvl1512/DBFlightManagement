@@ -55,8 +55,9 @@
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <button type="button" class="btn btn-secondary" onclick="window.location.href='@Url.Page("Index")'">Cancel</button>
 </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -7,11 +7,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using DBFlightManagement.Data;
 using DBFlightManagement.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace DBFlightManagement.Pages.Staffs
 {
-    [Authorize(Roles = "Admin,Staff")]
     public class IndexModel : PageModel
     {
         private readonly DBFlightManagement.Data.ApplicationDbContext _context;
@@ -21,7 +19,7 @@ namespace DBFlightManagement.Pages.Staffs
             _context = context;
         }
 
-        public IList<Staff> Staff { get; set; } = default!;
+        public IList<Staff> Staff { get;set; } = default!;
 
         [BindProperty(SupportsGet = true)]
         public string SearchTerm { get; set; }

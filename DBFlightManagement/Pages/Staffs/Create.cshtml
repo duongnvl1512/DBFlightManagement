@@ -56,14 +56,9 @@
     </div>
 
     <div class="form-group">
+        <span class="text-danger">*</span>
         <label asp-for="Input.Position" class="control-label"></label>
-        <select asp-for="Input.Position" class="form-control">
-            <option value="">Select position</option>
-            @foreach (var position in Enum.GetValues(typeof(DBFlightManagement.Constants.Position)))
-            {
-                <option value="@position">@position</option>
-            }
-        </select>
+        <input asp-for="Input.Position" class="form-control" />
         <span asp-validation-for="Input.Position" class="text-danger"></span>
     </div>
 

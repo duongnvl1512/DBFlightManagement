@@ -7,11 +7,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using DBFlightManagement.Data;
 using DBFlightManagement.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace DBFlightManagement.Pages.Customers
 {
-    [Authorize(Roles = "Admin,Staff")]
     public class IndexModel : PageModel
     {
         private readonly DBFlightManagement.Data.ApplicationDbContext _context;

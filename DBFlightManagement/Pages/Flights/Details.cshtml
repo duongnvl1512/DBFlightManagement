@@ -50,6 +50,6 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Flight.FlightId">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Page("./Edit", new { id = Model.Flight.FlightId })'">Edit</button>
+    <button type="button" class="btn btn-secondary" onclick="window.location.href='@Url.Page("Index")'">Cancel</button>
 </div>

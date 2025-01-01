@@ -39,9 +39,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Customer[0].Address)
             </th>
-@*             <th>
+            <th>
                 @Html.DisplayNameFor(model => model.Customer[0].IdentityUser)
-            </th> *@
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -66,13 +66,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
-@*             <td>
-                @Html.DisplayFor(modelItem => item.IdentityUser.Id)
-            </td> *@
             <td>
-                <a asp-page="./Details" asp-route-id="@item.CustomerId" class="btn btn-info btn-sm">Details</a>
-                <a asp-page="./Edit" asp-route-id="@item.CustomerId" class="btn btn-warning btn-sm">Edit</a>
-                <a asp-page="./Delete" asp-route-id="@item.CustomerId" class="btn btn-danger btn-sm">Delete</a>
+                @Html.DisplayFor(modelItem => item.IdentityUser.Id)
+            </td>
+            <td>
+                 <a asp-page="./Details" asp-route-id="@item.CustomerId" class="btn btn-info btn-sm">Details</a>
+                 <a asp-page="./Edit" asp-route-id="@item.CustomerId" class="btn btn-warning btn-sm">Edit</a>
+                 <a asp-page="./Delete" asp-route-id="@item.CustomerId" class="btn btn-danger btn-sm">Delete</a>
             </td>
         </tr>
 }
