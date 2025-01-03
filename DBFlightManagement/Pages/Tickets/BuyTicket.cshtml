@@ -26,10 +26,24 @@ else
     </div>
 
     <form method="post">
-        <div class="mb-3">
-            <label for="seatCount">Number of seats:</label>
-            <input type="number" id="seatCount" name="seatCount" min="1" max="@Model.TicketViewModel.Flight.AvailableSeats" required class="form-control" />
+        <div>
+            <label for="seatCount">Number of Seats:</label>
+            <input type="number" id="seatCount" name="seatCount" min="1" max="@Model.TicketViewModel.Flight.AvailableSeats"
+                   oninput="updateTotalPrice()" />
         </div>
+        <div>
+            <p>Total Price: <span id="totalPrice">0</span></p>
+        </div>
+
+        <script>
+            const ticketPrice = @Model.TicketViewModel.Flight.TicketPrice;
+
+            function updateTotalPrice() {
+                const seatCount = document.getElementById('seatCount').value;
+                const totalPrice = seatCount * ticketPrice;
+                document.getElementById('totalPrice').innerText = totalPrice > 0 ? totalPrice : 0;
+            }
+        </script>
 
         <div class="mb-3">
             <label for="paymentMethod">Payment Method:</label>
