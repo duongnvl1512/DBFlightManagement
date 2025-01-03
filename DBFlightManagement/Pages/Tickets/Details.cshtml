@@ -19,11 +19,12 @@ else
     <p><strong>Total Price:</strong> @Model.Ticket.TotalPrice</p>
     <p><strong>Payment Status:</strong> @(Model.Ticket.PaymentStatus ? "Paid" : "Unpaid")</p>
     <p><strong>Payment Method:</strong> @Model.Ticket.PaymentMethod</p>
+    <a asp-page="/Tickets/MyTicket" class="btn btn-secondary">Back</a>
 }
 <style>
     body {
         background: linear-gradient(135deg, white, #2F4F4F);
-        color: #FFFFFF;
+        color: black !important;
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;

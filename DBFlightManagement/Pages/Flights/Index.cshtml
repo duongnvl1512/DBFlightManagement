@@ -48,6 +48,7 @@
                 @Html.DisplayNameFor(model => model.Flight[0].TicketPrice)
             </th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -82,8 +83,7 @@
                 </td>
             }
             <td>
-                    <a asp-page="/Tickets/BuyTicket" asp-route-flightId="@item.FlightId"
-                       class="btn btn-primary">Buy Ticket</a>
+                    <a asp-page="/Tickets/BuyTicket" asp-route-flightId="@item.FlightId" class="btn btn-primary">Buy Ticket</a>
             </td>
         </tr>
 }
