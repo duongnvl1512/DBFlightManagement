@@ -63,17 +63,13 @@
 <style>
     body {
         background: linear-gradient(135deg, white, #2F4F4F);
-        color: #FFFFFF;
+        color: black;
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
         justify-content: center;
         align-items: center;
         height: 100vh;
-    }
-
-    a {
-        color: white;
     }
 
     h1 {
@@ -83,27 +79,23 @@
     }
 
     h3 {
+        text-align: center;
         color: red;
     }
 
-    h3, h4 {
-        text-align: center;
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-    }
-
-    .form-container {
+    .details-container {
         background-color: rgba(47, 79, 79, 0.9);
         padding: 30px;
         border-radius: 10px;
         box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
         width: 50%;
-        text-align: center;
+        text-align: left;
         margin: 0 auto;
     }
 
-    .row {
-        margin-bottom: 15px;
+    .row dd {
+        margin-bottom: 20px;
+        color: black;
     }
 
     .button-group {
@@ -115,12 +107,13 @@
 
     #back-list {
         text-decoration: none;
-        background-color: #F44336;
+        background-color: #2F4F4F;
         color: #FFFFFF;
         border: none;
         border-radius: 10px;
         padding: 10px 20px;
         margin-bottom: 10px;
+        margin-top: 10px;
         font-size: 1.2rem;
         font-weight: bold;
         cursor: pointer;
@@ -145,15 +138,8 @@
         flex: 1;
         text-align: center;
     }
-    #back-list {
-        background-color: #2F4F4F;
-    }
 
-    .btn-delete:hover {
-        background-color: #D32F2F;
-        color: #FFFFFF;
-    }
-
+    .btn-primary:hover,
     #back-list:hover {
         background-color: #1E90FF;
         color: #FFFFFF;

@@ -62,20 +62,37 @@
     </dl>
 </div>
 <div>
-    <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Page("./Edit", new { id = Model.Staff.StaffId })'">Edit</button>
+    <button type="button" class="button-update" onclick="window.location.href='@Url.Page("./Edit", new { id = Model.Staff.StaffId })'">Edit</button>
     <button type="button" class="btn btn-secondary" onclick="window.location.href='@Url.Page("./Index")'">Back to List</button>
 </div>
 
 <style>
     body {
         background: linear-gradient(135deg, white, #2F4F4F);
-        color: #FFFFFF;
+        color: black;
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
         justify-content: center;
         align-items: center;
         height: 100vh;
+    }
+
+    .button-update {
+        text-decoration: none;
+        background-color: #ebeb34;
+        color: black;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 20px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        flex: 1;
+        text-align: center;
     }
 
     h1 {
@@ -96,7 +113,7 @@
 
     .row dd {
         margin-bottom: 20px;
-        color: #FFFFFF;
+        color: black;
     }
 
     .button-group {

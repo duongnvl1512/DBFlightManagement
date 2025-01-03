@@ -21,6 +21,7 @@ else
                 <th>Total Price</th>
                 <th>Payment Status</th>
                 <th>Payment Method</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -34,6 +35,9 @@ else
                     <td>@ticket.TotalPrice</td>
                     <td>@(ticket.PaymentStatus ? "Paid" : "Unpaid")</td>
                     <td>@ticket.PaymentMethod</td>
+                    <td>
+                        <a asp-page="/Tickets/Details" asp-route-ticketId="@ticket.TicketId" class="btn btn-primary">Detail</a>
+                    </td>
                 </tr>
             }
         </tbody>
@@ -42,7 +46,7 @@ else
 <style>
     body {
         background: linear-gradient(135deg, white, #2F4F4F);
-        color: #FFFFFF;
+        color: black;
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
@@ -51,7 +55,7 @@ else
     h2 {
         text-align: center;
         font-size: 2.5rem;
-        color: #FFFFFF;
+        color: black;
         margin: 20px 0;
     }
 
